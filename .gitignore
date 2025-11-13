@@ -1,0 +1,3 @@
+#Files to ignore
+*.zip
+.DS_Store
