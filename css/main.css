@@ -19,3 +19,22 @@ h1, h2, h3, h4, p, a{
     font-family: sans-serif;
     color: white;
 }
+
+a{
+    text-decoration: none;
+    font-weight: bold;
+    font-style: italic;
+}
+
+header p{
+    color: var(--grey);
+}
+
+header nav{
+    display: flex;
+    column-gap: 2rem;
+}
+
+header a{
+    font-style: normal;
+}
