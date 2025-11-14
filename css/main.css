@@ -1,0 +1,21 @@
+/* variables for colours: https://www.w3schools.com/css/css3_variables.asp */
+
+:root{
+    --dark-blue: #0E1821;
+    --bright-blue: #1A9FFF;
+    --light-grey: #DCDEDF;
+    --grey: #8B929A;
+    --dark-grey: #3D4450;
+    --alt-blue: #1B2838;
+}
+
+body{
+    background-color: var(--dark-blue);
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+
+h1, h2, h3, h4, p, a{
+    font-family: sans-serif;
+    color: white;
+}
