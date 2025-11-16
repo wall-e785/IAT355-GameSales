@@ -9,10 +9,15 @@
     --alt-blue: #1B2838;
 }
 
+.content{
+    margin-left: 5rem;
+    margin-right: 5rem;
+}
+
 body{
-    background-color: var(--dark-blue);
-    margin-left: 2rem;
-    margin-right: 2rem;
+    /* referenced gradient from: https://www.w3schools.com/css/css3_gradients.asp */
+    background-image: linear-gradient(to bottom, #184454, #203559);
+    margin: 0;
 }
 
 h1, h2, h3, h4, p, a{
@@ -20,14 +25,46 @@ h1, h2, h3, h4, p, a{
     color: white;
 }
 
+h1{
+    font-size: 4rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+h3{
+    font-size: 2rem;
+}
+
+h4{
+    font-size: 1.5rem;
+}
+
+p{
+    font-size: 1.2rem;
+}
+
 a{
     text-decoration: none;
     font-weight: bold;
     font-style: italic;
+    transition-property: color;
+    transition-duration: .2s;
+}
+
+a:hover{
+    color: var(--bright-blue);
+}
+
+header{
+    background-color: var(--dark-blue);
+    margin: 0;
+    padding: 1rem 2rem;
 }
 
 header p{
     color: var(--grey);
+    margin-top: 0;
+    margin-bottom: .5rem;
 }
 
 header nav{
@@ -37,4 +74,52 @@ header nav{
 
 header a{
     font-style: normal;
+    font-size: 1.5rem;
+}
+
+#title{
+    text-align: center;
+    background-color: var(--alt-blue);
+    padding-top: 4rem;
+    padding-bottom: 2rem;
+}
+
+#intro-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+#intro, #decline, #landscape, #why, #conclusion{
+    margin-top: 10rem;
+}
+
+#decline-grid{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+}
+
+#decline p{
+    margin-top: 0;
+    margin-right: 5rem;
+}
+
+#why-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 3rem;
+}
+
+#conclusion{
+    margin-bottom: 10rem;
+}
+
+#conclusion-grid{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+}
+
+footer{
+    background-color: var(--dark-blue);
+    margin: 0;
+    padding: 1rem 2rem;
 }
