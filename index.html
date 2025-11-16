@@ -4,7 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/main.css">
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite-api@5.6.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-tooltip"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
     <title>How Do You Game?</title>
+    <script>
+        const options = {
+            config: {},
+            init: (view) => {
+            view.tooltip(new vegaTooltip.Handler().call);
+            },
+            view: {
+            loader: vega.loader({
+                baseURL: "https://cdn.jsdelivr.net/npm/vega-datasets@2/",
+            }),
+            renderer: "canvas",
+            },
+        };
+        vl.register(vega, vegaLite, options);
+    </script>
 </head>
 
 <body>
@@ -37,6 +58,7 @@
         <p>Digital sales at this point made less than 25% of the market share, with console gaming being entirely physical sales. Starting in 2013 consoles like the Xbox 360 and Playstation 3 started to have online storefronts for purchasing games, and allowing for direct downloads for game content. At the same time services like Steam started expanding blisteringly fast, becoming a dominant force in the games industry and the face of PC gaming.</p>
         <p>Other services like Blockbuster and Rogers Home Video quietly died between 2011 to 2013, due to the rise of streaming services like Netflix; limiting options for players to try before they buy. Additionally, used game markets became increasingly expensive, getting less value for trade ins and more pricey to buy used.</p>
         <p>By 2018 a large shift has occurred in the game industry, with less than 25% of sales being physical, a complete reversal from the 2009 environment. With the increase in internet download speeds, the ease of access from digital storefronts and the loss and deterioration of rentals and used game markets lead to the only outcome, a complete win for digital sales.</p>
+        <div id="vis1"></div>
     </section>
 
     <section id="1824">
@@ -50,6 +72,7 @@
 
         <h4>The lone outlier</h4>
         <p>For Square Enix, we see a much sharper drop off point. Due to both the fans preference and the idea of a collection prevalent with the fans of the publisher, Square Enix had a physical majority for its game sales, with a roughly 60/40% split. When COVID 19 caused lockdowns in 2020, this sales paradigm shifted to completely digital sales dominated, with a roughly 70-80% share of sales being digital from then on.</p>
+        <div id="vis2"></div>
     </section>
 
     <section id="why">
@@ -73,5 +96,7 @@
         <p>Created for IAT 355 - Fall 2025</p>
         <p>Wallace Chau, Kirsten Lee, Riley Schina</p>
     </footer>
+
+    <script type="module" src="JS\vis.js"></script>
 </body>
 </html>
