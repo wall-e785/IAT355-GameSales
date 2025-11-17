@@ -93,14 +93,32 @@ header a{
     margin-top: 10rem;
 }
 
+#intro p{
+    margin-top: 0;
+}
+
 #decline-grid{
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 1fr 2fr;
 }
 
 #decline p{
     margin-top: 0;
     margin-right: 5rem;
+}
+
+#landscape-grid, #landscape-grid-two{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 2rem;
+}
+
+#visComparison, #visSquareEnixSales{
+    margin-right: 3rem;
+}
+
+#landscape-grid h4, #landscape-grid-two h4{
+    margin-top: 0;
 }
 
 #why-grid{
@@ -115,11 +133,20 @@ header a{
 
 #conclusion-grid{
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 1fr 1fr;
+}
+
+#conclusion p{
+    margin-top: 0;
 }
 
 footer{
     background-color: var(--dark-blue);
     margin: 0;
     padding: 1rem 2rem;
+}
+
+footer p{
+    text-align: center;
+    color: var(--grey);
 }
