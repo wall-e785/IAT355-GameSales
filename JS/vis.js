@@ -123,8 +123,8 @@ async function run() {
       vl.yOffset().fieldN("Sales") // makes bars grouped by region
       
     )
-    .width(950)
-    .height(600)
+    .width(840)
+    .height(400)
     .toSpec();
 
   const visCapcomSales = vl.markBar()                        // Make a scatter chart
@@ -163,8 +163,8 @@ async function run() {
   await render("#visComparison", visComparison);
   await render("#visRevenueShare", visRevenueShare);
   await render("#visUSSales", visUSSales);
-  await render("#visSquareEnixSales", visSquareEnixSales);
-  // await render("#visNintendoSales", visNintendoSales);
+  //await render("#visSquareEnixSales", visSquareEnixSales);
+  await render("#visNintendoSales", visNintendoSales);
   // await render("#visCapcomSales", visCapcomSales);
 
 }
