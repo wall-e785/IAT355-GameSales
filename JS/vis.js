@@ -3,26 +3,32 @@ async function run() {
   const platforms = await d3.csv("./datasets/Single Platform (Console Developer) vs. Multi Platform.csv");
   const usData = await d3.csv("./datasets/US_SalesData.csv");
 
-  const visComparison = vl.markCircle()                        // Make a scatter chart
+  const visComparison = vl.markSquare()
     .data(platforms)
-    .title("Comparison of Sales by Format between Capcom, Nintendo, and Square Enix")
-    .transform([ //transform the data into an array
-        vl.fold(["Physical (%)", "Digital (%)"])
+    .transform([
+      vl.fold(["Physical (%)", "Digital (%)"])
         .as(["Format", "Sales"])
     ])
     .encode(
-        vl.x().fieldO("Year"),       // Platform
-        vl.y().fieldN("Developer"),              // Genre
-        vl.size().fieldQ("Sales"),
-        vl.color().fieldN("Format"),
-    // vl.tooltip().fieldN("Developer"),
-        vl.tooltip([ //copied the tooltip from the previous visualization
-        {field: "Developer", type: "nominal"},
-        {field: "Format", type: "nominal"},
-        ]),
-        vl.yOffset().fieldN("Sales") // makes bars grouped by region
-        
+      vl.x().fieldO("Year"),
+      vl.y().fieldN("Developer"),
+      vl.size().fieldQ("Sales").scale({ range: [10, 1000] }),
+      vl.color().fieldN("Format").scale({range: ["#1f77b4", "#ff7f0e"]}), //put colour values here to pic them,
+      vl.tooltip([
+        { field: "Developer", type: "nominal" },
+        { field: "Format", type: "nominal" },
+        { field: "Sales", type: "quantitative" }
+      ]),
+      vl.yOffset().fieldN("Sales")
     )
+    .config({
+      background: "white",        // <-- keep axes/legend white
+      view: {
+        //fill: null
+        fill: "transparent",      // <-- chart area transparent
+        stroke: "#ccc"            // optional border
+      }
+    })
     .width(800)
     .height(400)
     .toSpec(); 
@@ -60,7 +66,7 @@ async function run() {
             Year: d.Year,
             Format: format,
             Sales: +d[format],  // ensure numeric
-            opacity: (selectedFormat === "Both" || selectedFormat === format) ? 1 : 0.2
+            opacity: selectedFormat === "Both" || selectedFormat === format ? 1 : 0.2
           }))
         )
       )
