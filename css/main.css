@@ -12,6 +12,7 @@
 .content{
     margin-left: 5rem;
     margin-right: 5rem;
+    scroll-snap-align: start;
 }
 
 body{
