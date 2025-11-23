@@ -181,7 +181,7 @@ async function run() {
 
 
   await render("#visComparison", visComparison);
-  await render("#visRevenueShare", visRevenueShare);
+  // await render("#visRevenueShare", visRevenueShare);
   await render("#visUSSales", visUSSales);
   //await render("#visSquareEnixSales", visSquareEnixSales);
   await render("#visNintendoSales", visNintendoSales);

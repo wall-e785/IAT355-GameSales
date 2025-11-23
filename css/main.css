@@ -133,6 +133,12 @@ header a{
     margin-top: 0;
 }
 
+#piechart-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 #why-grid{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
