@@ -1,5 +1,4 @@
 /* variables for colours: https://www.w3schools.com/css/css3_variables.asp */
-
 :root{
     --dark-blue: #0E1821;
     --bright-blue: #1A9FFF;
@@ -10,8 +9,8 @@
 }
 
 .content{
-    margin-left: 5rem;
-    margin-right: 5rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
     scroll-snap-align: start;
 }
 
@@ -172,4 +171,138 @@ footer{
 footer p{
     text-align: center;
     color: var(--grey);
+}
+
+/* 1800px */
+@media (min-width: 112.5rem) {
+    .content{
+        margin-left: 5rem;
+        margin-right: 5rem;
+    }
+
+    h1{
+        font-size: 4rem;
+        margin-top: 0;
+        margin-bottom: 1rem;
+    }
+
+    h3{
+    font-size: 2rem;
+    }
+
+    h4{
+        font-size: 1.5rem;
+    }
+
+    p{
+        font-size: 1.2rem;
+    }
+
+    header{
+        margin: 0;
+        padding: 1rem 2rem;
+    }
+
+    header p{
+        margin-top: 0;
+        margin-bottom: .5rem;
+    }
+
+    header nav{
+        display: flex;
+        column-gap: 2rem;
+    }
+
+    header a{
+        font-size: 1.5rem;
+    }
+
+    #title{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--alt-blue);
+        background-image: url('../img/introbg.webp');
+        background-size: cover;
+        padding-top: 4rem;
+        padding-bottom: 2rem;
+    }
+
+    #intro-grid{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    #intro, #decline, #landscape, #why, #conclusion{
+        margin-top: 10rem;
+    }
+
+    #intro p{
+        margin-top: 0;
+    }
+
+    #intro img{
+        max-width: 90%;
+        height: auto;
+    }
+
+    #decline-grid{
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+    }
+
+    #decline p{
+        margin-top: 0;
+        margin-right: 5rem;
+    }
+
+    #landscape-grid, #landscape-grid-two{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        margin-top: 2rem;
+    }
+
+    #visComparison, #visNintendoSales{
+        margin-right: 3rem;
+    }
+
+    #landscape-grid h4, #landscape-grid-two h4{
+        margin-top: 0;
+    }
+
+    #piechart-container{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #why-grid{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        column-gap: 3rem;
+    }
+
+    #conclusion{
+        margin-bottom: 10rem;
+    }
+
+    #conclusion-grid{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    #conclusion p{
+        margin-top: 0;
+    }
+
+    #conclusion img{
+        width: 90%;
+        height: auto;
+    }
+
+    footer{
+        margin: 0;
+        padding: 1rem 2rem;
+    }
 }
