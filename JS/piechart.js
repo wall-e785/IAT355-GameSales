@@ -1,6 +1,29 @@
+//global variables for responsiveness, referenced from: https://www.geeksforgeeks.org/javascript/how-to-detect-when-the-window-size-is-resized-using-javascript/
+let screenWidth = window.innerWidth;
+
+//create tuples for each vis
+let pieDims= [400, 400];
+console.log(screenWidth);
+updateVisDims();
+
+function updateVisDims(){
+  if(screenWidth >= 1800){
+    pieDims = [400, 400];
+  }else if(screenWidth>=300){
+    pieDims= [200, 200];
+  }
+}
+
+window.onresize = function(){
+  screenWidth = window.innerWidth;
+  console.log(screenWidth);
+
+  updateVisDims();
+}
+
 const svg = d3.select("svg"),
-      width = +svg.attr("width"),
-      height = +svg.attr("height"),
+      width = pieDims[0],
+      height = pieDims[1],
       radius = Math.min(width, height) / 2;
 
 const g = svg.append("g").attr("transform", `translate(${width/2}, ${height/2})`);

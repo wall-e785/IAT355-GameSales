@@ -1,13 +1,22 @@
 //global variables for responsiveness, referenced from: https://www.geeksforgeeks.org/javascript/how-to-detect-when-the-window-size-is-resized-using-javascript/
 let screenWidth = window.innerWidth;
-let visWidth = 400;
-let visHeight = 300;
+
+//create tuples for each vis
+let usSalesWH= [400, 300];
+let comparisonWH = [400, 300];
+let nintendoWH = [400, 300];
 console.log(screenWidth);
 updateVisDims();
 
 function updateVisDims(){
   if(screenWidth >= 1800){
-    visWidth = 800;
+    usSalesWH = [1000, 490];
+    comparisonWH = [800, 400];
+    nintendoWH = [835, 400];
+  }else if(screenWidth>=300){
+    usSalesWH= [150, 200];
+    comparisonWH = [90, 250];
+    nintendoWH = [120, 200];
   }
 }
 
@@ -68,8 +77,8 @@ function createVisUSSales(usData, selectedFormat){
         {field: "Sales", type: "quantitative"}
       ])
   )
-  .width(visWidth)
-  .height(490)
+  .width(usSalesWH[0])
+  .height(usSalesWH[1])
   .toSpec(); 
 }
 
@@ -113,8 +122,8 @@ async function run() {
         stroke: "#ccc"            // optional border
       }
     })
-    .width(visWidth)
-    .height(400)
+    .width(comparisonWH[0])
+    .height(comparisonWH[1])
     .toSpec(); 
 
 
@@ -187,8 +196,8 @@ async function run() {
       vl.yOffset().fieldN("Sales") // makes bars grouped by region
       
     )
-    .width(visWidth)
-    .height(400)
+    .width(nintendoWH[0])
+    .height(nintendoWH[1])
     .toSpec();
 
   // const visCapcomSales = vl.markBar()                        // Make a scatter chart
@@ -236,7 +245,7 @@ async function run() {
 }
 
 async function render(viewID, spec) {
-  const result = await vegaEmbed(viewID, spec);
+  const result = await vegaEmbed(viewID, spec, {actions: false});
   result.view.run();
 }
 

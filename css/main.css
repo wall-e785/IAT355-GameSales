@@ -20,28 +20,33 @@ body{
     margin: 0;
 }
 
-h1, h2, h3, h4, p, a{
+h1, h2, h3, h4, p, a, label, button{
     font-family: sans-serif;
     color: white;
 }
 
 h1{
-    font-size: 4rem;
+    font-size: 2rem;
     margin-top: 0;
     margin-bottom: 1rem;
-    color: var(--bright-blue);
+    color: white;
+}
+
+h2{
+    font-size: 1rem;
 }
 
 h3{
     font-size: 2rem;
+    margin-bottom: 1.5rem;
 }
 
 h4{
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 }
 
 p{
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 
 a{
@@ -54,6 +59,13 @@ a{
 
 a:hover{
     color: var(--bright-blue);
+}
+
+button{
+    background-color: var(--bright-blue);
+    border-width: .1rem;
+    border-color: var(--light-grey);
+    border-style: solid;
 }
 
 header{
@@ -71,11 +83,13 @@ header p{
 header nav{
     display: flex;
     column-gap: 2rem;
+    row-gap: 1rem;
+    flex-wrap: wrap;
 }
 
 header a{
     font-style: normal;
-    font-size: 1.5rem;
+    font-size: .75rem;
 }
 
 #title{
@@ -88,48 +102,68 @@ header a{
     background-size: cover;
     padding-top: 4rem;
     padding-bottom: 2rem;
+    padding-left: 1rem;
 }
 
 #intro-grid{
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
 }
 
 #intro, #decline, #landscape, #why, #conclusion{
-    margin-top: 10rem;
+    margin-top: 3rem;
 }
 
 #intro p{
-    margin-top: 0;
+    margin-top: 1rem;
 }
 
 #intro img{
-    max-width: 90%;
+    max-width: 100%;
     height: auto;
 }
 
 #decline-grid{
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1fr;
 }
 
 #decline p{
     margin-top: 0;
-    margin-right: 5rem;
+    margin-right: 0;
+}
+
+#declineButtons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-right: .5rem;
+}
+
+#button-container{
+    display: flex;
+    justify-content: center;
+}
+
+#formatButton{
+    margin-top: .5rem;
+    font-size: 1.2rem;
+    width: 40vw;
 }
 
 #landscape-grid, #landscape-grid-two{
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     margin-top: 2rem;
 }
 
 #visComparison, #visNintendoSales{
-    margin-right: 3rem;
+    margin-right: 0rem;
 }
 
 #landscape-grid h4, #landscape-grid-two h4{
-    margin-top: 0;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 
 #piechart-container{
@@ -140,17 +174,17 @@ header a{
 
 #why-grid{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr;
     column-gap: 3rem;
 }
 
 #conclusion{
-    margin-bottom: 10rem;
+    margin-bottom: 5rem;
 }
 
 #conclusion-grid{
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
 }
 
 #conclusion p{
