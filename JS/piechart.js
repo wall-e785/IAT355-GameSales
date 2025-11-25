@@ -45,7 +45,7 @@ const arc = d3.arc().outerRadius(radius - 10).innerRadius(0);
 const labelArc = d3.arc().outerRadius(radius - 40).innerRadius(radius - 40);
 
 // Load CSV
-d3.csv("datasets/piechartdata.csv").then(rawData => {
+d3.csv("IAT355-GameSales/datasets/piechartdata.csv").then(rawData => {
   const publishers = Array.from(d3.group(rawData, d => d.Publisher), ([Publisher, values]) => {
     return {
       Publisher,
