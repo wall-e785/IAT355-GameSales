@@ -19,13 +19,13 @@
 /*referenced for full-size section (intro): https://www.youtube.com/watch?v=KAG5wNPdoTw&t=5s */
 .container{
     width: 100%;
-    height: 50%;
+    height: auto;
     scroll-snap-type: y mandatory;
 }
 
 .slide{
     width: 100%;
-    height: 50%;
+    height: auto;
     scroll-snap-align: start;
 }
 
@@ -44,7 +44,7 @@
     }
 
     .slide{
-        width: 100%;
+        width:100%;
         height: 100vh;
         scroll-snap-align: start;
     }
