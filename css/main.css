@@ -757,7 +757,7 @@ footer p{
         background-size: cover;
         padding-top: 4rem;
         padding-bottom: 2rem;
-        box-sizing:content-box;
+        box-sizing: border-box;
     }
 
     #intro-grid{
