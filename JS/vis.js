@@ -108,8 +108,8 @@ async function runUSVis(){
 }
 
 async function run() {
-  const companies = await d3.csv("./datasets/chart1data format column v2@2.csv");
-  const platforms = await d3.csv("./datasets/Single Platform (Console Developer) vs. Multi Platform.csv");
+  const companies = await d3.csv("./datasets/piechartdata.csv");
+  const platforms = await d3.csv("./datasets/platformdata.csv");
 
   const visComparison = vl.markSquare()
     .data(platforms)
