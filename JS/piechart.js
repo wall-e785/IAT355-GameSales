@@ -8,10 +8,18 @@ updateVisDims();
 
 function updateVisDims(){
   if(screenWidth >= 1800){
-    pieDims = [400, 400];
+    pieDims = [800, 800];
+  }else if(screenWidth>=1200){
+    pieDims= [600, 600];
+  }else if(screenWidth>=600){
+    pieDims= [400, 400];
   }else if(screenWidth>=300){
     pieDims= [200, 200];
   }
+
+  let svgElement = document.getElementById("piechart");
+  svgElement.setAttribute("width", pieDims[0]);
+  svgElement.setAttribute("height", pieDims[1]);
 }
 
 window.onresize = function(){

@@ -9,10 +9,14 @@ console.log(screenWidth);
 updateVisDims();
 
 function updateVisDims(){
-  if(screenWidth >= 1800){
+  if(screenWidth >= 1500){
     usSalesWH = [1000, 490];
     comparisonWH = [800, 400];
     nintendoWH = [835, 400];
+  }else if(screenWidth>=1200){
+    usSalesWH = [400, 500];
+    comparisonWH = [350, 500];
+    nintendoWH = [390, 500];
   }else if(screenWidth>=900){
     usSalesWH = [700, 400];
     comparisonWH = [620, 400];

@@ -29,8 +29,8 @@
     scroll-snap-align: start;
 }
 
-/* 1800px */
-@media (min-width: 112.5rem) {
+/* 1500px */
+@media (min-width: 93.75rem) {
     .block{
         animation: appear linear;
         animation-timeline: view();
