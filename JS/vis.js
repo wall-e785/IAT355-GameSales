@@ -13,6 +13,10 @@ function updateVisDims(){
     usSalesWH = [1000, 490];
     comparisonWH = [800, 400];
     nintendoWH = [835, 400];
+  }else if(screenWidth>=900){
+    usSalesWH = [700, 400];
+    comparisonWH = [620, 400];
+    nintendoWH = [660, 400];
   }else if(screenWidth>=600){
     usSalesWH = [400, 300];
     comparisonWH = [350, 250];
@@ -22,14 +26,17 @@ function updateVisDims(){
     comparisonWH = [90, 250];
     nintendoWH = [120, 200];
   }
+
+    run();
+    runUSVis();
 }
 
-window.onresize = function(){
+window.addEventListener("resize", () =>{
   screenWidth = window.innerWidth;
   console.log(screenWidth);
-
   updateVisDims();
-}
+
+})
 
 //global variables for 2009-2018 US Sales Visualization
 let visUSSales;
