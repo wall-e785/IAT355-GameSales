@@ -13,6 +13,10 @@ function updateVisDims(){
     usSalesWH = [1000, 490];
     comparisonWH = [800, 400];
     nintendoWH = [835, 400];
+  }else if(screenWidth>=600){
+    usSalesWH = [400, 300];
+    comparisonWH = [350, 250];
+    nintendoWH = [390, 250];
   }else if(screenWidth>=300){
     usSalesWH= [150, 200];
     comparisonWH = [90, 250];
