@@ -7,6 +7,7 @@ const plotWidth = width - margin.left - margin.right;
 const plotHeight = height - margin.top - margin.bottom;
 
 const g = svg.append("g")
+  .style("stroke", "#ffffff")
   .attr("transform", `translate(${margin.left},${margin.top})`);
 
 let data;
@@ -19,6 +20,7 @@ const formatLabel = svg.append("text")
   .attr("text-anchor", "middle")
   .attr("font-size", 18)
   .attr("font-weight", "bold")
+  .style("fill", "#ffffff")
   .text("Physical Sales");
 
 // --- LOAD CSV ---
@@ -59,10 +61,10 @@ function drawChart(animate = false) {
   const y = d3.scaleLinear().domain([0, 100]).range([plotHeight, 0]);
 
   // axes
-  g.append("g").attr("transform", `translate(0,${plotHeight})`).call(d3.axisBottom(x).tickFormat(d3.format("d")));
-  g.append("text").attr("x", plotWidth/2).attr("y", plotHeight+40).attr("text-anchor","middle").text("Year");
-  g.append("g").call(d3.axisLeft(y));
-  g.append("text").attr("transform","rotate(-90)").attr("x",-plotHeight/2).attr("y",-45).attr("text-anchor","middle").text("Percentage (%)");
+  g.append("g").attr("transform", `translate(0,${plotHeight})`).style("stroke", "#ffffff").call(d3.axisBottom(x).tickFormat(d3.format("d")));
+  g.append("text").attr("x", plotWidth/2).attr("y", plotHeight+40).attr("text-anchor","middle").style("fill", "#ffffff").text("Year");
+  g.append("g").call(d3.axisLeft(y)).style("stroke", "#ffffff");
+  g.append("text").attr("transform","rotate(-90)").attr("x",-plotHeight/2).attr("y",-45).attr("text-anchor","middle").style("fill", "#ffffff").text("Percentage (%)");
 
   const line = d3.line().x(d=>x(d.Year)).y(d=>y(d.value)).curve(d3.curveMonotoneX);
 
