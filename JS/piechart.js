@@ -1,5 +1,5 @@
 // ------------------- Setup -------------------
-const svg = d3.select("svg"),
+const svg = d3.select("#piechart"),
       width = +svg.attr("width"),
       height = +svg.attr("height"),
       radius = Math.min(width, height) / 2;
