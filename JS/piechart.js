@@ -1,40 +1,11 @@
-//global variables for responsiveness, referenced from: https://www.geeksforgeeks.org/javascript/how-to-detect-when-the-window-size-is-resized-using-javascript/
-let screenWidth = window.innerWidth;
-
-//create tuples for each vis
-let pieDims= [400, 400];
-console.log(screenWidth);
-updateVisDims();
-
-function updateVisDims(){
-  if(screenWidth >= 1800){
-    pieDims = [800, 800];
-  }else if(screenWidth>=1200){
-    pieDims= [600, 600];
-  }else if(screenWidth>=600){
-    pieDims= [400, 400];
-  }else if(screenWidth>=300){
-    pieDims= [200, 200];
-  }
-
-  let svgElement = document.getElementById("piechart");
-  svgElement.setAttribute("width", pieDims[0]);
-  svgElement.setAttribute("height", pieDims[1]);
-}
-
-window.onresize = function(){
-  screenWidth = window.innerWidth;
-  console.log(screenWidth);
-
-  updateVisDims();
-}
-
-const svg = d3.select("#piechart"),
-      width = pieDims[0],
-      height = pieDims[1],
+// ------------------- Setup -------------------
+const svg = d3.select("svg"),
+      width = +svg.attr("width"),
+      height = +svg.attr("height"),
       radius = Math.min(width, height) / 2;
 
-const g = svg.append("g").attr("transform", `translate(${width/2}, ${height/2})`);
+const g = svg.append("g")
+             .attr("transform", `translate(${width / 2}, ${height / 2})`);
 
 const color = d3.scaleOrdinal()
                 .domain(["Digital", "Physical"])
@@ -44,27 +15,64 @@ const pie = d3.pie().value(d => d.value);
 const arc = d3.arc().outerRadius(radius - 10).innerRadius(0);
 const labelArc = d3.arc().outerRadius(radius - 40).innerRadius(radius - 40);
 
-// Load CSV
-d3.csv("datasets/piechartdata.csv").then(rawData => {
-  const publishers = Array.from(d3.group(rawData, d => d.Publisher), ([Publisher, values]) => {
-    return {
-      Publisher,
-      Digital: +values.find(v => v.Format === "Digital").Frequency,
-      Physical: +values.find(v => v.Format === "Physical").Frequency
-    };
-  });
+// Inner circle radius (donut hub)
+const innerCircleRadius = radius * 0.45;
 
+// ------------------- Legend -------------------
+const legend = svg.append("g")
+                  .attr("class", "legend")
+                  .attr("transform", `translate(${width - 70}, 10)`); // position top-right
+
+const legendData = ["Digital", "Physical"];
+
+legend.selectAll("rect")
+  .data(legendData)
+  .enter()
+  .append("rect")
+    .attr("x", 0)
+    .attr("y", (d, i) => i * 25)
+    .attr("width", 18)
+    .attr("height", 18)
+    .attr("fill", d => color(d));
+
+legend.selectAll("text")
+  .data(legendData)
+  .enter()
+  .append("text")
+    .attr("x", 25)
+    .attr("y", (d, i) => i * 25 + 14)
+    .text(d => d)
+    .attr("font-size", "12px")
+    .attr("fill", "#333");
+
+// ------------------- Load Data -------------------
+d3.csv("datasets/piechartdata.csv").then(rawData => {
+
+  // Process CSV into usable format
+  const publishers = Array.from(
+    d3.group(rawData, d => d.Publisher),
+    ([Publisher, values]) => {
+      return {
+        Publisher,
+        Digital: +values.find(v => v.Format === "Digital").Frequency,
+        Physical: +values.find(v => v.Format === "Physical").Frequency
+      };
+    }
+  );
+
+  // ------------------- Update Pie Chart -------------------
   function updatePie(index) {
     const pieData = [
       {format: "Digital", value: publishers[index].Digital},
       {format: "Physical", value: publishers[index].Physical}
     ];
 
-    // DATA JOIN for slices
-    const paths = g.selectAll("path").data(pie(pieData));
+    // ---------- 1. Draw pie slices ----------
+    const paths = g.selectAll("path.slice").data(pie(pieData));
 
     paths.join(
       enter => enter.append("path")
+                    .attr("class", "slice")
                     .attr("d", arc)
                     .attr("fill", d => color(d.data.format))
                     .each(function(d) { this._current = d; }),
@@ -77,7 +85,20 @@ d3.csv("datasets/piechartdata.csv").then(rawData => {
                       })
     );
 
-    // DATA JOIN for labels on slices
+    // ---------- 2. Draw inner circle (donut hub) ----------
+    const centerCircle = g.selectAll("circle.inner").data([null]);
+
+    centerCircle.join(
+      enter => enter.append("circle")
+                    .attr("class", "inner")
+                    .attr("r", innerCircleRadius)
+                    .attr("fill", "white")
+                    .attr("stroke", "#333")
+                    .attr("stroke-width", 2),
+      update => update.attr("r", innerCircleRadius)
+    );
+
+    // ---------- 3. Draw slice labels ----------
     const labels = g.selectAll("text.label").data(pie(pieData));
 
     labels.join(
@@ -88,14 +109,14 @@ d3.csv("datasets/piechartdata.csv").then(rawData => {
                     .attr("font-size", "12px")
                     .attr("text-anchor", "middle")
                     .attr("transform", d => `translate(${labelArc.centroid(d)})`)
-                    .text(d => `${(d.data.value*100).toFixed(1)}%`),
+                    .text(d => `${(d.data.value * 100).toFixed(1)}%`),
       update => update.transition()
                       .duration(1000)
                       .attr("transform", d => `translate(${labelArc.centroid(d)})`)
-                      .text(d => `${(d.data.value*100).toFixed(1)}%`)
+                      .text(d => `${(d.data.value * 100).toFixed(1)}%`)
     );
 
-    // DATA JOIN for publisher name in center
+    // ---------- 4. Draw publisher name in center ----------
     const title = g.selectAll("text.title").data([publishers[index].Publisher]);
 
     title.join(
@@ -110,14 +131,17 @@ d3.csv("datasets/piechartdata.csv").then(rawData => {
     );
   }
 
-  // Initialize first pie chart
+  // ------------------- Initialize first pie chart -------------------
   updatePie(0);
 
-  // Create buttons dynamically
+  // ------------------- Image Buttons -------------------
   const buttonContainer = d3.select("#buttons");
   publishers.forEach((d, i) => {
-    buttonContainer.append("button")
-                   .text(d.Publisher)
-                   .on("click", () => updatePie(i));
+    buttonContainer.append("img")
+      .attr("src", `img/${d.Publisher}.png`)  // publisher images
+      .attr("class", "pub-btn")
+      .attr("id", `btn-${i}`)
+      .on("click", () => updatePie(i));
   });
+
 });
