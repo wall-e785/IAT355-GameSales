@@ -111,35 +111,35 @@ async function run() {
   const companies = await d3.csv("./datasets/piechartdata.csv");
   const platforms = await d3.csv("./datasets/platformdata.csv");
 
-  const visComparison = vl.markSquare()
-    .data(platforms)
-    .transform([
-      vl.fold(["Physical (%)", "Digital (%)"])
-        .as(["Format", "Sales"])
-    ])
-    .encode(
-      vl.x().fieldO("Year"),
-      vl.y().fieldN("Developer"),
-      vl.size().fieldQ("Sales").scale({ range: [10, 1000] }),
-      vl.color().fieldN("Format").scale({range: ["#1f77b4", "#ff7f0e"]}), //put colour values here to pic them,
-      vl.tooltip([
-        { field: "Developer", type: "nominal" },
-        { field: "Format", type: "nominal" },
-        { field: "Sales", type: "quantitative" }
-      ]),
-      vl.yOffset().fieldN("Sales")
-    )
-    .config({
-      background: "white",        // <-- keep axes/legend white
-      view: {
-        //fill: null
-        fill: "transparent",      // <-- chart area transparent
-        stroke: "#ccc"            // optional border
-      }
-    })
-    .width(comparisonWH[0])
-    .height(comparisonWH[1])
-    .toSpec(); 
+  // const visComparison = vl.markSquare()
+  //   .data(platforms)
+  //   .transform([
+  //     vl.fold(["Physical (%)", "Digital (%)"])
+  //       .as(["Format", "Sales"])
+  //   ])
+  //   .encode(
+  //     vl.x().fieldO("Year"),
+  //     vl.y().fieldN("Developer"),
+  //     vl.size().fieldQ("Sales").scale({ range: [10, 1000] }),
+  //     vl.color().fieldN("Format").scale({range: ["#1f77b4", "#ff7f0e"]}), //put colour values here to pic them,
+  //     vl.tooltip([
+  //       { field: "Developer", type: "nominal" },
+  //       { field: "Format", type: "nominal" },
+  //       { field: "Sales", type: "quantitative" }
+  //     ]),
+  //     vl.yOffset().fieldN("Sales")
+  //   )
+  //   .config({
+  //     background: "white",        // <-- keep axes/legend white
+  //     view: {
+  //       //fill: null
+  //       fill: "transparent",      // <-- chart area transparent
+  //       stroke: "#ccc"            // optional border
+  //     }
+  //   })
+  //   .width(comparisonWH[0])
+  //   .height(comparisonWH[1])
+  //   .toSpec(); 
 
 
   // const visRevenueShare = vl
@@ -248,7 +248,7 @@ async function run() {
  
 
 
-  await render("#visComparison", visComparison);
+  // await render("#visComparison", visComparison);
   // await render("#visRevenueShare", visRevenueShare);
 
   //await render("#visSquareEnixSales", visSquareEnixSales);

@@ -29,7 +29,7 @@ window.onresize = function(){
   updateVisDims();
 }
 
-const svg = d3.select("svg"),
+const svg = d3.select("#piechart"),
       width = pieDims[0],
       height = pieDims[1],
       radius = Math.min(width, height) / 2;
