@@ -1,46 +1,46 @@
-//global variables for responsiveness, referenced from: https://www.geeksforgeeks.org/javascript/how-to-detect-when-the-window-size-is-resized-using-javascript/
-let screenWidth = window.innerWidth;
+// //global variables for responsiveness, referenced from: https://www.geeksforgeeks.org/javascript/how-to-detect-when-the-window-size-is-resized-using-javascript/
+// let screenWidth = window.innerWidth;
 
-//create tuples for each vis
-let usSalesWH= [400, 300];
-let comparisonWH = [400, 300];
-let nintendoWH = [400, 300];
-console.log(screenWidth);
-updateVisDims();
+// //create tuples for each vis
+// let usSalesWH= [400, 300];
+// let comparisonWH = [400, 300];
+// let nintendoWH = [400, 300];
+// console.log(screenWidth);
+// updateVisDims();
 
-function updateVisDims(){
-  if(screenWidth >= 1500){
-    usSalesWH = [1000, 490];
-    comparisonWH = [800, 400];
-    nintendoWH = [835, 400];
-  }else if(screenWidth>=1200){
-    usSalesWH = [400, 500];
-    comparisonWH = [350, 500];
-    nintendoWH = [390, 500];
-  }else if(screenWidth>=900){
-    usSalesWH = [700, 400];
-    comparisonWH = [620, 400];
-    nintendoWH = [660, 400];
-  }else if(screenWidth>=600){
-    usSalesWH = [400, 300];
-    comparisonWH = [350, 250];
-    nintendoWH = [390, 250];
-  }else if(screenWidth>=300){
-    usSalesWH= [150, 200];
-    comparisonWH = [90, 250];
-    nintendoWH = [120, 200];
-  }
+// function updateVisDims(){
+//   if(screenWidth >= 1500){
+//     usSalesWH = [1000, 490];
+//     comparisonWH = [800, 400];
+//     nintendoWH = [835, 400];
+//   }else if(screenWidth>=1200){
+//     usSalesWH = [400, 500];
+//     comparisonWH = [350, 500];
+//     nintendoWH = [390, 500];
+//   }else if(screenWidth>=900){
+//     usSalesWH = [700, 400];
+//     comparisonWH = [620, 400];
+//     nintendoWH = [660, 400];
+//   }else if(screenWidth>=600){
+//     usSalesWH = [400, 300];
+//     comparisonWH = [350, 250];
+//     nintendoWH = [390, 250];
+//   }else if(screenWidth>=300){
+//     usSalesWH= [150, 200];
+//     comparisonWH = [90, 250];
+//     nintendoWH = [120, 200];
+//   }
 
-    run();
-    runUSVis();
-}
+//     run();
+//     runUSVis();
+// }
 
-window.addEventListener("resize", () =>{
-  screenWidth = window.innerWidth;
-  console.log(screenWidth);
-  updateVisDims();
+// window.addEventListener("resize", () =>{
+//   screenWidth = window.innerWidth;
+//   console.log(screenWidth);
+//   updateVisDims();
 
-})
+// })
 
 //global variables for 2009-2018 US Sales Visualization
 let visUSSales;
@@ -92,8 +92,10 @@ function createVisUSSales(usData, selectedFormat){
         {field: "Sales", type: "quantitative"}
       ])
   )
-  .width(usSalesWH[0])
-  .height(usSalesWH[1])
+  .width("container")
+  .height(300)
+  // .width(usSalesWH[0])
+  // .height(usSalesWH[1])
   .toSpec(); 
 }
 
@@ -211,8 +213,8 @@ async function run() {
       vl.yOffset().fieldN("Sales") // makes bars grouped by region
       
     )
-    .width(nintendoWH[0])
-    .height(nintendoWH[1])
+    .width("container")
+    .height(300)
     .toSpec();
 
   // const visCapcomSales = vl.markBar()                        // Make a scatter chart
@@ -263,5 +265,7 @@ async function render(viewID, spec) {
   const result = await vegaEmbed(viewID, spec, {actions: false});
   result.view.run();
 }
+
+
 
 run();
