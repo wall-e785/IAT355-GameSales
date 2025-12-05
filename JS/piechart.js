@@ -1,8 +1,25 @@
 // ------------------- Setup -------------------
-const svg = d3.select("#piechart"),
-      width = +svg.attr("width"),
-      height = +svg.attr("height"),
-      radius = Math.min(width, height) / 2;
+const svg = d3.select("#piechart");
+
+// get container width/height dynamically
+function getSize() {
+  const rect = svg.node().getBoundingClientRect(); 
+  return {
+    width: rect.width || 400,
+    height: rect.height || 400
+  };
+}
+
+let { width, height } = getSize();
+
+let radius = Math.min(width/2, height/2);
+
+
+svg
+  .attr("width", "100%")
+  .attr("height", "100%")
+  .attr("viewBox", `0 0 ${width} ${height}`)
+  .attr("preserveAspectRatio", "xMidYMid meet");
 
 const g = svg.append("g")
              .attr("transform", `translate(${width / 2}, ${height / 2})`);
