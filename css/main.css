@@ -8,6 +8,18 @@
     --alt-blue: #1B2838;
 }
 
+/* loading fonts referenced from https://www.w3schools.com/css/css3_fonts.asp*/
+@font-face{
+    font-family: "GT America";
+    src: url("fonts/GT-America-Trial-VF.ttf");
+}
+
+@font-face{
+    font-family: "MotivaSans";
+    src: url("fonts/MotivaSansBold.woff.ttf");
+    font-weight: bold;
+}
+
 .content{
     margin-left: 1rem;
     margin-right: 1rem;
@@ -20,8 +32,13 @@ body{
     margin: 0;
 }
 
-h1, h2, h3, h4, p, a, label, button{
-    font-family: sans-serif;
+h1, h2, h3, h4{
+    font-family: "MotivaSans", sans-serif;
+    color: white;
+}
+
+p, a, label, button{
+    font-family: "GT America", sans-serif;
     color: white;
 }
 
@@ -232,7 +249,6 @@ footer p{
     }
 
     h1, h2, h3, h4, p, a, label, button{
-        font-family: sans-serif;
         color: white;
     }
 
@@ -409,7 +425,6 @@ footer p{
     }
 
     h1, h2, h3, h4, p, a, label, button{
-        font-family: sans-serif;
         color: white;
     }
 
