@@ -1,0 +1,83 @@
+/* body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f0f2f5;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.container {
+  max-width: 600px;
+  margin: 40px auto;
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+
+h1 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+svg {
+  display: block;
+  margin: 0 auto 20px auto;
+} */
+
+.buttons-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 14px;
+  border-radius: 8px;
+  border: none;
+  background-color: #1f77b4;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+}
+
+button:hover {
+  background-color: #155a8a;
+  transform: translateY(-2px);
+}
+
+path {
+  stroke: #fff;
+  stroke-width: 2px;
+}
+.pub-btn {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  margin: 6px;
+  cursor: pointer;
+  border-radius: 12px;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.pub-btn:hover {
+  transform: scale(1.06);
+  box-shadow: 0 0 10px rgba(0,0,0,.25);
+}
+
+.pub-btn.selected {
+  outline: 4px solid #0078ff;  
+  transform: scale(1.1);        
+  box-shadow: 0 0 12px rgba(0,120,255,0.6);
+}
+#piechart svg{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content:center;
+        width: 100%
+}

@@ -262,7 +262,13 @@ async function run() {
 }
 
 async function render(viewID, spec) {
-  const result = await vegaEmbed(viewID, spec, {actions: false});
+  const result = await vegaEmbed(viewID, spec, {actions: false, config: {
+    autosize: {
+      type: "fit",
+      contains: "padding",
+      resize: true       
+    }
+  }});
   result.view.run();
 }
 
