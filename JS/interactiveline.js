@@ -1,10 +1,16 @@
-const svg = d3.select("#chart");
-const width = +svg.attr("width");
-const height = +svg.attr("height");
-const margin = { top: 50, right: 120, bottom: 50, left: 60 };
 
+const container = d3.select("#chart");
+const width = +container.attr("width");
+const height = +container.attr("height");
+const margin = { top: 50, right: 120, bottom: 50, left: 60 };
 const plotWidth = width - margin.left - margin.right;
 const plotHeight = height - margin.top - margin.bottom;
+
+const svg =  container.append("svg")
+  .attr("width", '100%')
+  .attr("height", '100%')
+  .attr("viewBox", `0 0 ${width} ${height}`)
+  .attr('preserveAspectRatio','xMinYMin');
 
 const g = svg.append("g")
   .style("stroke", "#ffffff")
