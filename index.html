@@ -86,24 +86,13 @@
             <p>By 2018 a large shift has occurred in the game industry, with less than 25% of sales being physical, a complete reversal from the 2009 environment. With the increase in internet download speeds, the ease of access from digital storefronts and the loss and deterioration of rentals and used game markets lead to the only outcome, a complete win for digital sales.</p>
             
             <h4>See how trends changed...</h4>
-            <div id="visUSSales" class="vegalite-container"></div>
-                 <div id="declineButtons">
-                    <div>
-                            <input type="radio" id="both" name="formatHighlight" value="Both" checked="checked">
-                            <label for="both">Both</label>
-                        </div>
-                        <div>
-                            <input type="radio" id="physical" name="formatHighlight" value="Physical">
-                            <label for="physical">Physical</label>
-                        </div>
-                        <div>
-                            <input type="radio" id="digital" name="formatHighlight" value="Digital">
-                            <label for="both">Digital</label>
-                        </div>   
-                </div>
-                <div id="button-container">
-                    <button id="formatButton">Show</button>
-                </div>
+            <div id="controls">
+                <button data-mode="Both" class="active">Both</button>
+                <button data-mode="Physical">Physical</button>
+                <button data-mode="Digital">Digital</button>
+            </div>
+
+            <svg id="areachart"></svg>
         </section>
                 
 
@@ -143,7 +132,7 @@
 
         <section class="slide">
             <h3>The lone outlier</h3>
-               <div id="visNintendoSales" class="vegalite-container"></div>
+               <!-- <div id="visNintendoSales" class="vegalite-container"></div> -->
                 <div>
                     <p>As with all things, there exists an outlier and in this case its name is Nintendo. During this period, Nintendo has had a much less sharp decline in game sales compared to other publishers and it mostly comes down to the fact that they only develop for a singular platform, their own console. Other factors include a tendency for people to want physical copies of their games due to poorly maintained and implemented storefronts and for sharing games with friends and family. Unlike other publishers, Nintendo has kept mostly even in terms of sales format, only since 2023, have digital sales for Nintendo outperformed physical, with less than 10% difference as of 2025. Nintendo as a company takes the approach of the physical format being important to the overall product, and are branching out into other media to support this. Nintendo sponsored symphonies, Nintendo theme parks, movies about Nintendo intellectual properties, and restaurants inspired by their creations are all becoming a part of their business strategy. </p>
                 </div> 
@@ -203,8 +192,9 @@
         </section>
     </div>
 
-    <script type="module" src="JS/vis.js"></script>
+    <!-- <script type="module" src="JS/vis.js"></script> -->
     <script type="module" src="JS/piechart.js"></script>
     <script type="module" src="JS/interactiveline.js"></script>
+    <script type="module" src="JS/areachart.js"></script>
 </body>
 </html>
