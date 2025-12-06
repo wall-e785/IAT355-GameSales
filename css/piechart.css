@@ -73,3 +73,10 @@ path {
     width: 20vw;
   }
 }
+
+/* 1200px */
+@media (min-width: 75rem) {
+  .pub-btn {
+    width: 15vw;
+  }
+}
