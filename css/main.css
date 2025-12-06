@@ -23,13 +23,14 @@
 .content{
     margin-left: 1rem;
     margin-right: 1rem;
-    scroll-snap-align: start;
 }
 
-body{
+html, body{
     /* referenced gradient from: https://www.w3schools.com/css/css3_gradients.asp */
     background-image: linear-gradient(to bottom, #184454, #203559);
     margin: 0;
+    padding: 0;
+    scroll-snap-type: y mandatory;
 }
 
 h1, h2, h3, h4{
@@ -55,15 +56,20 @@ h2{
 
 h3{
     font-size: 2rem;
+    margin-top: 0;
     margin-bottom: 1.5rem;
+    padding-top: 1rem;
 }
 
 h4{
     font-size: 1.2rem;
+    padding-top: 1rem;
+    margin-top: .5rem;
 }
 
 p{
     font-size: 1rem;
+    margin-top: 0;
 }
 
 a{
@@ -85,6 +91,10 @@ button{
     border-style: solid;
 }
 
+img{
+    border-radius: 1rem;
+}
+
 header{
     background-color: var(--dark-blue);
     margin: 0;
@@ -102,11 +112,16 @@ header nav{
     column-gap: 2rem;
     row-gap: 1rem;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 header a{
     font-style: normal;
     font-size: .75rem;
+}
+
+#top-nav{
+    padding: .5rem 1rem 1rem 1rem;
 }
 
 #title{
@@ -117,11 +132,14 @@ header a{
     background-color: var(--alt-blue);
     background-image: url('../img/introbg.webp');
     background-size: cover;
-    padding-top: 4rem;
-    padding-bottom: 2rem;
-    padding-left: 1rem;
-    padding-right: 0;
+    background-position: center;
+    padding: 0;
     box-sizing: border-box;
+    height: 90vh;
+}
+
+#title h1, #title h2{
+    margin-left: 1rem;
 }
 
 #intro-grid{
@@ -207,7 +225,8 @@ header a{
 }
 
 #piechart{
-    width: 40%;
+    width: 100%;
+    height: 40vh;
 }
 
 #why-grid{
@@ -216,9 +235,6 @@ header a{
     column-gap: 3rem;
 }
 
-#conclusion{
-    margin-bottom: 5rem;
-}
 
 #conclusion-grid{
     display: grid;
@@ -232,12 +248,14 @@ header a{
 #conclusion img{
     width: 100%;
     height: auto;
+    margin-bottom: 1rem;
 }
 
 footer{
     background-color: var(--dark-blue);
     margin: 0;
     padding: 1rem 2rem;
+    margin-top: 6rem;
 }
 
 footer p{
@@ -292,6 +310,12 @@ footer p{
         color: var(--bright-blue);
     }
 
+    
+    img{
+        border-radius: 1.5rem;
+    }
+
+
     button{
         background-color: var(--bright-blue);
         border-width: .1rem;
@@ -314,6 +338,11 @@ footer p{
         padding-top: 4rem;
         padding-bottom: 2rem;
         box-sizing: border-box;
+        height: 90vh;
+    }
+
+    header nav{
+        justify-content: flex-start;
     }
 
     #intro-grid{
@@ -391,10 +420,6 @@ footer p{
         column-gap: 3rem;
     }
 
-    #conclusion{
-        margin-bottom: 5rem;
-    }
-
     #conclusion-grid{
         display: grid;
         grid-template-columns: 1fr;
@@ -411,7 +436,7 @@ footer p{
 
     footer{
         background-color: var(--dark-blue);
-        margin: 0;
+        margin-top: 6rem;
         padding: 1rem 2rem;
     }
 
@@ -490,7 +515,7 @@ footer p{
         padding-top: 4rem;
         padding-bottom: 2rem;
         box-sizing: border-box;
-
+        height: 90vh;
     }
 
     #intro-grid{
@@ -568,10 +593,6 @@ footer p{
         column-gap: 3rem;
     }
 
-    #conclusion{
-        margin-bottom: 5rem;
-    }
-
     #conclusion-grid{
         display: grid;
         grid-template-columns: 1fr;
@@ -642,6 +663,12 @@ footer p{
         font-size: 1.5rem;
     }
 
+    .two-col-grid{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 1rem;
+    }
+
     #title{
         display: flex;
         flex-direction: column;
@@ -653,6 +680,7 @@ footer p{
         padding-top: 4rem;
         padding-bottom: 2rem;
         box-sizing: border-box;
+        height: 90vh;
     }
 
     #intro-grid{
@@ -711,10 +739,6 @@ footer p{
         column-gap: 3rem;
     }
 
-    #conclusion{
-        margin-bottom: 10rem;
-    }
-
     #conclusion-grid{
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -730,7 +754,7 @@ footer p{
     }
 
     footer{
-        margin: 0;
+        margin-top: 15vw;
         padding: 1rem 2rem;
     }
 }
@@ -790,6 +814,7 @@ footer p{
         padding-top: 4rem;
         padding-bottom: 2rem;
         box-sizing: border-box;
+        height: 90vh;
     }
 
     #intro-grid{
@@ -848,10 +873,6 @@ footer p{
         column-gap: 3rem;
     }
 
-    #conclusion{
-        margin-bottom: 10rem;
-    }
-
     #conclusion-grid{
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -867,7 +888,7 @@ footer p{
     }
 
     footer{
-        margin: 0;
+        margin-top: 10vw;
         padding: 1rem 2rem;
     }
 }

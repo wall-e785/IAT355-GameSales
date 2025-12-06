@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/animate.css">
     <link rel="stylesheet" href="css/piechart.css">
+    <link rel="stylesheet" href="css/areachart.css">
+    <link rel="stylesheet" href="css/linechart.css">
     <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
@@ -33,138 +35,203 @@
 </head>
 
 <body>
-    <header>
-        <p>IAT355</p>
-        <nav>
-            <a href="#intro">Intro</a>
-            <a href="#decline">2009 to 2018</a>
-            <a href="#landscape">2018 to 2024</a>
-            <a href="#why">Why</a>
-            <a href="#conclusion">Conclusion</a>
-        </nav>
-    </header>
-
-    <section id="title" class="slide">
+    <header class="slide">
+        <div id="top-nav">
+            <p>IAT355</p>
+            <nav>
+                <a href="#intro">Intro</a>
+                <a href="#decline">2009 to 2018</a>
+                <a href="#landscape">2018 to 2024</a>
+                <a href="#why">Why</a>
+                <a href="#conclusion">Conclusion</a>
+            </nav>
+        </div>
+        <section id="title">
             <h1>How Do You Game?</h1>
             <h2>Wallace Chau, Kirsten Lee, Riley Schina</h2>
         </section>
+    </header>
+
+    
    
     <div class="content">
 
         <section id="intro" class="slide">
             <h3>Intro</h3>
             <div id="intro-grid">
-                <img src="img/physical.webp" alt="Game Store Shelves" width="2500" height="1875">
+                <!--responsive images referenced from: https://developer.mozilla.org/en-US/docs/Web/HTML/Guides/Responsive_images-->
+                <img srcset="img/physical-1000w.webp 1000w, img/physical-1700w.webp 1700w, img/physical-2500w.webp 2500w" 
+                    sizes="(max-width: 900px) 900px, (max-width: 1200px) 1200px, 2500px"
+                    src="img/physical-2500w.webp" 
+                    alt="Game Store Shelves">
                 <div>
                     <p>The game industry has come a long way since the days of 80s arcades, with the boom of consoles and later pc gaming making gaming as much a matter of collection management as it was playing. People boasted about their vast game collections in similar ways to someone collecting trading cards or album records, with pride and enthusiasm. Services like Blockbuster and Rogers home video allowed for generations of gamers to try different games without purchasing, and stores like GameStop, Best Buy and Walmart dominated the sales of games due to a thriving game industry, through to 2010.</p>
-                    <p>Fast forward to 2024 and we see a much different picture. Services like Blockbuster and Rogers home video have disappeared, and the market for game sales has shifted to a digital sales majority.</p>
-                    <p>A sampling of some of the top game publishers show a strong majority for digital sales, with the exception of Nintendo. So what happened? Let’s embark on a journey through the last two decades of gaming, and the events that changed game sales.</p>
                 </div>
             </div>    
         </section>
 
+        <section class="slide">
+            <div class="two-col-grid">
+                <div>
+                    <h3>How about now?</h3>
+                    <p>Fast forward to 2024 and we see a much different picture. Services like Blockbuster and Rogers home video have disappeared, and the market for game sales has shifted to a digital sales majority.</p>
+                    <p>A sampling of some of the top game publishers show a strong majority for digital sales, with the exception of Nintendo. So what happened? Let’s embark on a journey through the last two decades of gaming, and the events that changed game sales.</p>
+                </div>
+            </div>
+        </section>
+
         <section id="decline" class="slide">
-            <h3>2009 to 2018, the steady decline of physical sales</h3>
+            <h3>Flashback: 2009</h3>
             <div id="decline-grid">
                 <div>
                     <p>2009 is where we first start to see the steady decline of physical sales in the gaming industry.</p>
                     <p>Digital sales at this point made less than 25% of the market share, with console gaming being entirely physical sales. Starting in 2013 consoles like the Xbox 360 and Playstation 3 started to have online storefronts for purchasing games, and allowing for direct downloads for game content. At the same time services like Steam started expanding blisteringly fast, becoming a dominant force in the games industry and the face of PC gaming.</p>
                     <p>Other services like Blockbuster and Rogers Home Video quietly died between 2011 to 2013, due to the rise of streaming services like Netflix; limiting options for players to try before they buy. Additionally, used game markets became increasingly expensive, getting less value for trade ins and more pricey to buy used.</p>
-                    <p>By 2018 a large shift has occurred in the game industry, with less than 25% of sales being physical, a complete reversal from the 2009 environment. With the increase in internet download speeds, the ease of access from digital storefronts and the loss and deterioration of rentals and used game markets lead to the only outcome, a complete win for digital sales.</p>
                 </div>
-                
-                <div id="visUSSales" class="vegalite-container"></div>
-                 <div id="declineButtons">
-                    <div>
-                            <input type="radio" id="both" name="formatHighlight" value="Both" checked="checked">
-                            <label for="both">Both</label>
-                        </div>
-                        <div>
-                            <input type="radio" id="physical" name="formatHighlight" value="Physical">
-                            <label for="physical">Physical</label>
-                        </div>
-                        <div>
-                            <input type="radio" id="digital" name="formatHighlight" value="Digital">
-                            <label for="both">Digital</label>
-                        </div>   
-                    </div>
-                    <div id="button-container">
-                        <button id="formatButton">Show</button>
-                    </div>
-                </div>
+            </div>
         </section>
 
-        <section id="landscape" class="slide">
-            <h3>2018 to 2024, A look at the new landscape for gaming</h3>
-            <p>During this period multiple events and breakthroughs further changed the gaming landscape; the rise in popularity of Twitch and YouTube streaming, the COVID-19 pandemic creating a shut down, and further enhancements to internet and computing technologies have all affected the game market. So let's take a look at a couple of different companies and how they did during this period.</p>
-            <div id="landscape-grid">
+        <section class="slide">
+            <div class="two-col-grid">
                 <div>
-                    <div id="chart" width="1000" height="400"></div>
-                    <button id="physicalBtn">Physical</button>
+                    <h3>By 2018?</h3>
+                    <p>By 2018 a large shift has occurred in the game industry, with less than 25% of sales being physical, a complete reversal from the 2009 environment. With the increase in internet download speeds, the ease of access from digital storefronts and the loss and deterioration of rentals and used game markets lead to the only outcome, a complete win for digital sales.</p>
+                </div>
+                <div>
+                    <h4>See how trends changed...</h4>
+                    <svg id="areachart"></svg>
+                    <div id="controls">
+                        <button data-mode="Both" class="active">Both</button>
+                        <button data-mode="Physical">Physical</button>
+                        <button data-mode="Digital">Digital</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+                
+
+        <section id="landscape" class="slide">
+            <h3>Rise of socials</h3>
+            <p>Post-2018, multiple events and breakthroughs further changed the gaming landscape; the rise in popularity of Twitch and YouTube streaming, the COVID-19 pandemic creating a shut down, and further enhancements to internet and computing technologies have all affected the game market. So let's take a look at a couple of different companies and how they did during this period.</p>
+            <div>
+                <div id="chart" width="1000" height="400"></div>
+                <div id="line-controls">
+                    <button id="physicalBtn" class="active">Physical</button>
                     <button id="digitalBtn">Digital</button>
                     <button id="outlierBtn">Outlier</button>
-                </div>
-                <!-- <div id="visComparison" class="vegalite-container"></div> -->
+               </div>         
+            </div>
+        </section>
+
+        <section class="slide">
+            <h3>The expected result</h3>
+            <div id="landscape-grid">
                 <div>
-                    <h4>The expected results</h4>
                     <p>Taking a look at popular publishers Capcom and Square Enix, shows the industry trend towards digital fairly well. Both publishers make games for multiple platforms and do not have large exclusivity towards a specific platform, making for good examples of the industry.</p>
-                    <p>For Capcom, we see a steady decline up to 2019; as technology improves and more storefronts come online, digital sales start to rise. Then COVID 19 happens and with it a sharp rise in digital sales; in following years as restrictions on movement lift we actually see a small decrease in the digital sales percentage. Finally in 2023 we see another sharp rise in digital sales due to convenience and improved download speeds.</p>
-                    <p>For Square Enix, we see a much sharper drop off point. Due to both the fans preference and the idea of a collection prevalent with the fans of the publisher, Square Enix had a physical majority for its game sales, with a roughly 60/40% split. When COVID 19 caused lockdowns in 2020, this sales paradigm shifted to completely digital sales dominated, with a roughly 70-80% share of sales being digital from then on.</p>
                 </div>
             </div>
 
             <div id="landscape-grid-two">
-                <div id="visNintendoSales" class="vegalite-container"></div>
-                <div>
-                    <h4>The lone outlier</h4>
-                    <p>As with all things, there exists an outlier and in this case its name is Nintendo. During this period, Nintendo has had a much less sharp decline in game sales compared to other publishers and it mostly comes down to the fact that they only develop for a singular platform, their own console. Other factors include a tendency for people to want physical copies of their games due to poorly maintained and implemented storefronts and for sharing games with friends and family. Unlike other publishers, Nintendo has kept mostly even in terms of sales format, only since 2023, have digital sales for Nintendo outperformed physical, with less than 10% difference as of 2025. Nintendo as a company takes the approach of the physical format being important to the overall product, and are branching out into other media to support this. Nintendo sponsored symphonies, Nintendo theme parks, movies about Nintendo intellectual properties, and restaurants inspired by their creations are all becoming a part of their business strategy. </p>
-                </div> 
+             
             </div>
         </section>
 
-        <section id="why" class="slide">
-            <h3>Why this shift matters: The Good, The Bad, and The Ugly</h3>
-            <!-- <div id="visRevenueShare" class="vegalite-container"></div> -->
-            <!-- <div id="visNintendoSales" class="vegalite-container"></div>
-            <div id="visCapcomSales" class="vegalite-container"></div> -->
-            <div class="piechart-container">
-                <svg id="piechart" width="400" height="400"></svg>
-                <div id="buttons" class="buttons-container"></div>
+        <section class="slide">
+            <div class="two-col-grid">
+                <div>
+                    <h4>Looking at Capcom</h4>
+                    <p>For Capcom, we see a steady decline up to 2019; as technology improves and more storefronts come online, digital sales start to rise. Then COVID 19 happens and with it a sharp rise in digital sales; in following years as restrictions on movement lift we actually see a small decrease in the digital sales percentage. Finally in 2023 we see another sharp rise in digital sales due to convenience and improved download speeds.</p>
+                </div>
             </div>
-            <div id="why-grid">
+        </section>
+
+        <section class="slide">
+            <div class="two-col-grid">
+                <div>
+                    <h4>Looking at Square Enix</h4>
+                    <p>For Square Enix, we see a much sharper drop off point. Due to both the fans preference and the idea of a collection prevalent with the fans of the publisher, Square Enix had a physical majority for its game sales, with a roughly 60/40% split. When COVID 19 caused lockdowns in 2020, this sales paradigm shifted to completely digital sales dominated, with a roughly 70-80% share of sales being digital from then on.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="slide">
+            <h3>The lone outlier</h3>
+               <!-- <div id="visNintendoSales" class="vegalite-container"></div> -->
+                <div>
+                    <p>As with all things, there exists an outlier and in this case its name is Nintendo. During this period, Nintendo has had a much less sharp decline in game sales compared to other publishers and it mostly comes down to the fact that they only develop for a singular platform, their own console. Other factors include a tendency for people to want physical copies of their games due to poorly maintained and implemented storefronts and for sharing games with friends and family. Unlike other publishers, Nintendo has kept mostly even in terms of sales format, only since 2023, have digital sales for Nintendo outperformed physical, with less than 10% difference as of 2025. Nintendo as a company takes the approach of the physical format being important to the overall product, and are branching out into other media to support this. Nintendo sponsored symphonies, Nintendo theme parks, movies about Nintendo intellectual properties, and restaurants inspired by their creations are all becoming a part of their business strategy. </p>
+                </div> 
+        </section>
+
+        <section class="slide">
+            <h3>Why does this shift matter?</h3>
+        </section>
+
+        <section class="slide">
+            <div class="two-col-grid">
                 <div>
                     <h4>The Good</h4>
                     <p>Games have never been more accessible or diverse than they are now. The change to mostly digital gaming has allowed the rise of smaller developers to be able to get their game out to more audiences for cheaper costs, lowering the requirements to make and market a game. Consumers have more and easier options to how they want to play, with an increased level of access to an increasing number of titles, publishers, and developers.</p>
                 </div>
-                
+            </div>
+        </section>
+
+        <section class="slide">
+            <div class="two-col-grid">
                 <div>
                     <h4>The Bad</h4>
                     <p>Games are a business, and with being a business at some point a service ends. Strictly digital games can have service interruption in many forms, from a developer pulling support from the game after many years, to a game being removed from storefronts due to poor reviews or sales. These issues have gotten to the point that large scale protests like the <a href="https://www.stopkillinggames.com/">Stop Killing Games</a> movement are appearing to try and combat the problems with games disappearing.</p>
                 </div>
-                
+            </div>
+        </section>
+
+
+        <section class="slide">
+            <div class="two-col-grid">
                 <div>
                     <h4>The Ugly</h4>
                     <p>Some game studios are claiming legally that consumers no longer own games, they own temporary licenses to games; creating a legal grey area for what constitutes ownership and what rights consumers have in regards to their game collections. In 2024, <a href="https://www.techspot.com/news/101534-ubisoft-wishes-gamers-would-accept-not-owning-their.html">a Ubisoft executive</a> claimed that gamers should accept not owning their games, while trying to push a more expensive subscription program for access to their game catalog. This sparked push back from the consumer market and created distrust between publishers and consumers.</p>
                 </div>
             </div>
         </section>
-        
-        <section id="conclusion" class="slide">
-            <h3>Conclusion</h3>
-            <div id="conclusion-grid">
-                <img src="img/digital.webp" alt="filler image" width="1920" height="1080">
-                <p>The game market has forever been changed by the move to predominantly digital sales. The ease of access and variety of games has created a larger than ever before game community. While there are some negatives that need to be figured out in terms of ownership it will be interesting to see where the game industry heads to next.</p>
+
+        <section id="why" class="slide">
+            <h3>Stats as of 2024</h3>
+            <div class="piechart-container">
+                <svg id="piechart" width="400" height="400"></svg>
+                <div id="buttons" class="buttons-container"></div>
             </div>
+            <!-- <div id="why-grid">
+                <div>
+                    
+                </div>
+                
+                <div>
+                    
+                </div>
+                
+                <div>
+                    
+                </div>
+            </div> -->
         </section>
     </div>
-    
-    <footer>
-        <p>Created for IAT 355 - Fall 2025</p>
-        <p>Wallace Chau, Kirsten Lee, Riley Schina</p>
-    </footer>
+    <section id="conclusion">
+        <div class="content">
+            <h3>Conclusion</h3>
+            <div id="conclusion-grid">
+                <img src="img/digital-1920w.webp" alt="filler image" width="1920" height="1080">
+                <p>The game market has forever been changed by the move to predominantly digital sales. The ease of access and variety of games has created a larger than ever before game community. While there are some negatives that need to be figured out in terms of ownership it will be interesting to see where the game industry heads to next.</p>
+            </div>
+        </div>
+        <footer>
+            <p>Created for IAT 355 - Fall 2025</p>
+            <p>Wallace Chau, Kirsten Lee, Riley Schina</p>
+        </footer>
+    </section>
 
-    <script type="module" src="JS/vis.js"></script>
+    <!-- <script type="module" src="JS/vis.js"></script> -->
     <script type="module" src="JS/piechart.js"></script>
     <script type="module" src="JS/interactiveline.js"></script>
+    <script type="module" src="JS/areachart.js"></script>
 </body>
 </html>

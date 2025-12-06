@@ -33,30 +33,14 @@ svg {
   gap: 10px;
 }
 
-button {
-  padding: 10px 20px;
-  font-size: 14px;
-  border-radius: 8px;
-  border: none;
-  background-color: #1f77b4;
-  color: white;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-}
-
-button:hover {
-  background-color: #155a8a;
-  transform: translateY(-2px);
-}
-
 path {
   stroke: #fff;
   stroke-width: 2px;
 }
+
 .pub-btn {
-  width: 120px;
-  height: 120px;
+  width: 30vw;
+  height: auto;
   object-fit: contain;
   margin: 6px;
   cursor: pointer;
@@ -74,10 +58,25 @@ path {
   transform: scale(1.1);        
   box-shadow: 0 0 12px rgba(0,120,255,0.6);
 }
+
 #piechart svg{
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content:center;
         width: 100%
+}
+
+/* 600px */
+@media (min-width: 37.5rem) {
+  .pub-btn {
+    width: 20vw;
+  }
+}
+
+/* 1200px */
+@media (min-width: 75rem) {
+  .pub-btn {
+    width: 15vw;
+  }
 }
