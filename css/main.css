@@ -230,9 +230,6 @@ header a{
     column-gap: 3rem;
 }
 
-#conclusion{
-    margin-bottom: 5rem;
-}
 
 #conclusion-grid{
     display: grid;
@@ -246,12 +243,14 @@ header a{
 #conclusion img{
     width: 100%;
     height: auto;
+    margin-bottom: 1rem;
 }
 
 footer{
     background-color: var(--dark-blue);
     margin: 0;
     padding: 1rem 2rem;
+    margin-top: 6rem;
 }
 
 footer p{
@@ -404,10 +403,6 @@ footer p{
         display: grid;
         grid-template-columns: 1fr 1fr;
         column-gap: 3rem;
-    }
-
-    #conclusion{
-        margin-bottom: 5rem;
     }
 
     #conclusion-grid{
@@ -583,10 +578,6 @@ footer p{
         column-gap: 3rem;
     }
 
-    #conclusion{
-        margin-bottom: 5rem;
-    }
-
     #conclusion-grid{
         display: grid;
         grid-template-columns: 1fr;
@@ -727,10 +718,6 @@ footer p{
         column-gap: 3rem;
     }
 
-    #conclusion{
-        margin-bottom: 10rem;
-    }
-
     #conclusion-grid{
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -863,10 +850,6 @@ footer p{
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         column-gap: 3rem;
-    }
-
-    #conclusion{
-        margin-bottom: 10rem;
     }
 
     #conclusion-grid{
