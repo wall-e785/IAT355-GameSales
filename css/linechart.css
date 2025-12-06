@@ -1,0 +1,26 @@
+#chart {
+  display: flex;
+  justify-content: center;
+}
+
+#line-controls {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 2rem;
+}
+
+#line-controls button {
+  padding: 8px 18px;
+  border: none;
+  background: var(--light-grey);
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--dark-grey);
+}
+
+#line-controls button.active {
+  background: var(--bright-blue);
+  color: white;
+}

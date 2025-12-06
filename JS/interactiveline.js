@@ -78,6 +78,17 @@ window.addEventListener("load", function () {
         drawOutlier();
     };
 
+    // -------------------------------
+    // BUTTON HANDLERS
+    // -------------------------------
+    d3.selectAll("#line-controls button").on("click", function() {
+        d3.selectAll("#line-controls button").classed("active", false);
+        d3.select(this).classed("active", true);
+
+        mode = this.dataset.mode;
+        update(mode);
+    });
+
     // -----------------------------
     // DRAW NORMAL CHART
     // -----------------------------

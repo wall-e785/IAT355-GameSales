@@ -1,4 +1,4 @@
-const svg = d3.select("#areachart")
+const svg = d3.select("#areachart");
 
 function getSize() {
   const rect = svg.node().getBoundingClientRect(); 
@@ -228,9 +228,6 @@ d3.csv("datasets/US_SalesData.csv").then(data => {
   d3.selectAll("#controls button").on("click", function() {
     d3.selectAll("#controls button").classed("active", false);
     d3.select(this).classed("active", true);
-
-    mode = this.dataset.mode;
-    update(mode);
   });
 
   // -------------------------------

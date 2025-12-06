@@ -1,0 +1,38 @@
+#areachart {
+  display: flex;
+  justify-content: center;
+}
+
+#controls {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 2rem;
+}
+
+#controls button {
+  padding: 8px 18px;
+  border: none;
+  background: var(--light-grey);
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--dark-grey);
+}
+
+#controls button.active {
+  background: var(--bright-blue);
+  color: white;
+}
+
+.tooltip {
+  position: absolute;
+  background: white;
+  border: 1px solid #bbb;
+  border-radius: 5px;
+  padding: 6px 10px;
+  pointer-events: none;
+  opacity: 0;
+  font-size: 12px;
+  box-shadow: 0px 2px 6px rgba(0,0,0,0.15);
+}
