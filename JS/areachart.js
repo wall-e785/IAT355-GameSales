@@ -228,6 +228,9 @@ d3.csv("datasets/US_SalesData.csv").then(data => {
   d3.selectAll("#controls button").on("click", function() {
     d3.selectAll("#controls button").classed("active", false);
     d3.select(this).classed("active", true);
+    let mode = d3.select(this).attr("data-mode");
+
+    update(mode);
   });
 
   // -------------------------------
