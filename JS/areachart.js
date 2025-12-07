@@ -17,8 +17,9 @@ const margin = { top: 60, right: 100, bottom: 60, left: 60 };
 
 // Colors for formats
 const colors = {
-  Physical: "#1f77b4",
-  Digital:  "#ff7f0e"
+  Physical: "#d40b0bff",
+  Digital:  "#1A9FFF"
+
 };
 
 // Append SVG
@@ -33,7 +34,10 @@ svg
 // Tooltip
 const tooltip = d3.select("body")
   .append("div")
-  .attr("class", "tooltip");
+  .attr("class", "tooltip")
+  .style("background-color", "#1A9FFF")
+  .style("color", "white")
+  .style("font-family", "GT America");
 
 let mode = "Both"; // initial mode
 
@@ -74,6 +78,7 @@ d3.csv("datasets/US_SalesData.csv").then(data => {
   svg.append("g")
     .attr("class","xaxis")
     .attr("transform", `translate(0,${height})`)
+    .style("color", "white")
     .call(d3.axisBottom(x));
 
   svg.append("g")
@@ -265,6 +270,7 @@ d3.csv("datasets/US_SalesData.csv").then(data => {
     .attr("y", (d, i) => i * 25 + 14)
     .text(d => d.label)
     .style("font-size", "14px")
+    .style("fill", "white")
     .style("font-family", "Arial, sans-serif");
 
 });

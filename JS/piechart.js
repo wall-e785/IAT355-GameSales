@@ -26,7 +26,7 @@ const g = svg.append("g")
 
 const color = d3.scaleOrdinal()
                 .domain(["Digital", "Physical"])
-                .range(["#1f77b4", "#ff7f0e"]);
+                .range(["#1f77b4", "#d40b0bff"]);
 
 const pie = d3.pie().value(d => d.value);
 const arc = d3.arc().outerRadius(radius - 10).innerRadius(0);
@@ -38,7 +38,7 @@ const innerCircleRadius = radius * 0.45;
 // ------------------- Legend -------------------
 const legend = svg.append("g")
                   .attr("class", "legend")
-                  .attr("transform", `translate(${width - 70}, 10)`); // position top-right
+                  .attr("transform", `translate(${width - 300}, 10)`); // position top-right
 
 const legendData = ["Digital", "Physical"];
 
@@ -60,7 +60,8 @@ legend.selectAll("text")
     .attr("y", (d, i) => i * 25 + 14)
     .text(d => d)
     .attr("font-size", "12px")
-    .attr("fill", "#333");
+    .attr("fill", "#ffffff")
+    .style("font-family", "GT America");
 
 // ------------------- Load Data -------------------
 d3.csv("datasets/piechartdata.csv").then(rawData => {
@@ -109,8 +110,8 @@ d3.csv("datasets/piechartdata.csv").then(rawData => {
       enter => enter.append("circle")
                     .attr("class", "inner")
                     .attr("r", innerCircleRadius)
-                    .attr("fill", "white")
-                    .attr("stroke", "#333")
+                    .attr("fill", "#203559")
+                    .attr("stroke", "#192a46ff")
                     .attr("stroke-width", 2),
       update => update.attr("r", innerCircleRadius)
     );
@@ -142,7 +143,8 @@ d3.csv("datasets/piechartdata.csv").then(rawData => {
                     .attr("text-anchor", "middle")
                     .attr("dy", ".35em")
                     .attr("font-size", "16px")
-                    .attr("fill", "#333")
+                    .attr("fill", "#ffffff")
+                    .style("font-family", "GT America")
                     .text(d => d),
       update => update.text(d => d)
     );

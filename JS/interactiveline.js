@@ -30,7 +30,8 @@ window.addEventListener("load", function () {
 
     const g = svg.append("g")
         .attr("transform", `translate(${margin.left},${margin.top})`)
-        .style("stroke", "#ffffff");
+        .style("stroke", "#ffffff"); 
+       // keep commented
 
     let data;
     let currentType = "Physical";
@@ -209,7 +210,8 @@ window.addEventListener("load", function () {
             .attr("x", -plotHeight / 2)
             .attr("y", -45)
             .attr("text-anchor", "middle")
-            .style("fill", "#ffffff")
+           // .style("fill", "#ffffff")
+           // tester
             .text("Percentage (%)");
 
         const line = d3.line()
