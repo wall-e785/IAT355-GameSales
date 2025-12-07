@@ -170,6 +170,11 @@ header a{
     margin-right: 0;
 }
 
+#decline img{
+    max-width: 100%;
+    height: auto;
+}
+
 .vegalite-container{
     width: 100%;
     max-width: 100%;
@@ -200,6 +205,17 @@ header a{
     display: grid;
     grid-template-columns: 1fr;
     margin-top: 2rem;
+}
+
+.logo-header{
+    margin-bottom: .5rem;
+}
+
+.logo{
+    border-radius: 0;
+    max-width: 75%;
+    height: auto;
+    margin-bottom: 1rem;
 }
 
 #visComparison, #visNintendoSales{
