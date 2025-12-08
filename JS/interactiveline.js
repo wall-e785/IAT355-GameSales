@@ -90,7 +90,7 @@ window.addEventListener("load", function () {
         const x = d3.scaleLinear().domain(d3.extent(years)).range([0, plotWidth]);
         const y = d3.scaleLinear().domain([0, 100]).range([plotHeight, 0]);
 
-        const isMobile = width < 600;
+        const isMobile = window.innerWidth < 600;
 
         // -----------------------------
         // X AXIS
@@ -190,7 +190,7 @@ window.addEventListener("load", function () {
     window.addEventListener("resize", () => {
 
         ({ width, height } = getSize());
-        plotWidth = width - margin.left - margin.right;
+        plotWidth = width - margin.right - 10;
         plotHeight = height - margin.top - margin.bottom;
 
         svg.attr("viewBox", `0 0 ${width} ${height}`);

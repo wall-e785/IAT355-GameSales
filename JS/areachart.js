@@ -284,12 +284,9 @@ d3.csv("datasets/US_SalesData.csv").then(data => {
       .attr("class", "legend-label")
       .attr("id", d => d.label + "-areachart") //used to identify labels for hiding/showing
       .attr("x", 5)
-      .attr("y", (d, i) => i * 80 + 10)
+      .attr("y", (d, i) => i * 90 + 10)
       .attr("z", 5) //add z value so the labels always render on top of everything else
-      .text(d => d.label)
-      .style("font-size", "14px")
-      .style("fill", "white")
-      .style("font-weight", "bold")
-      .style("font-family", "GT America, Arial");
+      .text(d => d.label);
+
 
 });

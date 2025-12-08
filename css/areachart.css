@@ -40,3 +40,16 @@
 .hidden{
   visibility: hidden;
 }
+
+.legend-label{
+  font-size: .8rem;
+  fill: white;
+  font-weight: bold;
+}
+
+/* 600px */
+@media (min-width: 37.5rem) {
+  .legend-label{
+    font-size: .5rem;
+  }
+}

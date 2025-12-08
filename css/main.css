@@ -148,7 +148,7 @@ header a{
 }
 
 #intro, #decline, #landscape, #why, #conclusion{
-    margin-top: 3rem;
+    margin-top: 0rem;
 }
 
 #intro p{
@@ -233,6 +233,10 @@ header a{
 #landscape-grid h4, #landscape-grid-two h4{
     margin-top: 1rem;
     margin-bottom: 1rem;
+}
+
+#expected h3{
+    margin-bottom: 0;
 }
 
 #chart{
@@ -379,10 +383,6 @@ footer p{
         grid-template-columns: 1fr;
     }
 
-    #intro, #decline, #landscape, #why, #conclusion{
-        margin-top: 3rem;
-    }
-
     #intro p{
         margin-top: 1rem;
     }
@@ -423,7 +423,7 @@ footer p{
     #landscape-grid, #landscape-grid-two{
         display: grid;
         grid-template-columns: 1fr;
-        margin-top: 2rem;
+        margin-top: 1.5rem;
     }
 
     .logo-header{
@@ -432,7 +432,7 @@ footer p{
 
     .logo{
         border-radius: 0;
-        max-width: 50%;
+        max-width: 40%;
         height: auto;
         margin-bottom: 1rem;
     }
@@ -561,10 +561,6 @@ footer p{
     #intro-grid{
         display: grid;
         grid-template-columns: 1fr;
-    }
-
-    #intro, #decline, #landscape, #why, #conclusion{
-        margin-top: 3rem;
     }
 
     #intro p{
@@ -741,10 +737,6 @@ footer p{
         grid-template-columns: 1fr 1fr;
     }
 
-    #intro, #decline, #landscape, #why, #conclusion{
-        margin-top: 5rem;
-    }
-
     #intro p{
         margin-top: 0;
     }
@@ -873,10 +865,6 @@ footer p{
     #intro-grid{
         display: grid;
         grid-template-columns: 1fr 1fr;
-    }
-
-    #intro, #decline, #landscape, #why, #conclusion{
-        margin-top: 10rem;
     }
 
     #intro p{

@@ -61,6 +61,8 @@ legend.selectAll("text")
     .text(d => d)
     .attr("class", "legend-label");
 
+    
+
 // ------------------- Load Data -------------------
 d3.csv("datasets/piechartdata.csv").then(rawData => {
 
