@@ -46,8 +46,8 @@ legend.selectAll("rect")
   .data(legendData)
   .enter()
   .append("rect")
-    .attr("x", 0)
-    .attr("y", (d, i) => i * 25)
+    .attr("x", (d, i) => i * 100 + 75)
+    .attr("y", 0)
     .attr("width", 18)
     .attr("height", 18)
     .attr("fill", d => color(d));
@@ -56,12 +56,10 @@ legend.selectAll("text")
   .data(legendData)
   .enter()
   .append("text")
-    .attr("x", 25)
-    .attr("y", (d, i) => i * 25 + 14)
+    .attr("x", (d, i) => i * 100 + 100)
+    .attr("y", 12)
     .text(d => d)
-    .attr("font-size", "12px")
-    .attr("fill", "#ffffff")
-    .style("font-family", "GT America");
+    .attr("class", "legend-label");
 
 // ------------------- Load Data -------------------
 d3.csv("datasets/piechartdata.csv").then(rawData => {
@@ -137,17 +135,25 @@ d3.csv("datasets/piechartdata.csv").then(rawData => {
     // ---------- 4. Draw publisher name in center ----------
     const title = g.selectAll("text.title").data([publishers[index].Publisher]);
 
-    title.join(
-      enter => enter.append("text")
-                    .attr("class", "title")
-                    .attr("text-anchor", "middle")
-                    .attr("dy", ".35em")
-                    .attr("font-size", "16px")
-                    .attr("fill", "#ffffff")
-                    .style("font-family", "GT America")
-                    .text(d => d),
-      update => update.text(d => d)
-    );
+    if(d => d == "Take-Two Entertainment"){
+      title.join(
+        enter => enter.append("text")
+                      .attr("class", "title")
+                      .attr("text-anchor", "middle")
+                      .attr("dy", ".35em")
+                      .text("Take-Two Entertainment"),
+        update => update.text(d => d)
+      );
+    }else{
+      title.join(
+        enter => enter.append("text")
+                      .attr("class", "title")
+                      .attr("text-anchor", "middle")
+                      .attr("dy", ".35em")
+                      .text(d => d),
+        update => update.text(d => d)
+      );
+    }
   }
 
   // ------------------- Initialize first pie chart -------------------
