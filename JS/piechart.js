@@ -165,7 +165,7 @@ d3.csv("datasets/piechartdata.csv").then(rawData => {
 
   publishers.forEach((d, i) => {
     buttonContainer.append("img")
-      .attr("src", `img/buttons/${d.Publisher}.png`)  // publisher images
+      .attr("src", `img/buttons/${d.Publisher}-700w.webp`)  // publisher images
       .attr("class", "pub-btn")
       .attr("id", `btn-${i}`)
       .on("click", function () {
@@ -174,7 +174,7 @@ d3.csv("datasets/piechartdata.csv").then(rawData => {
           d3.select(`#btn-${selectedButtonIndex}`)
           .attr("src", `img/buttons/${currPublisher}.png`)
         }
-        d3.select(this).attr("src", `img/buttons/${d.Publisher}_select.png`); 
+        d3.select(this).attr("src", `img/buttons/${d.Publisher}_select-700w.webp`); 
         selectedButtonIndex = i;
         updatePie(i);
         });
