@@ -85,6 +85,7 @@ d3.csv("datasets/US_SalesData.csv").then(data => {
     .attr("class","yaxis")
     .call(d3.axisLeft(y))
       .style("color", "white");
+
     
   // -------------------------------
   // UPDATE FUNCTION (bars + lines + circles)
