@@ -16,7 +16,7 @@ window.addEventListener("load", function () {
     let { width, height } = getSize();
     const margin = { top: 50, right: 120, bottom: 50, left: 60 };
 
-    let plotWidth = width - margin.left - margin.right;
+    let plotWidth = width - margin.right - 10;
     let plotHeight = height - margin.top - margin.bottom;
 
     // -----------------------------
@@ -41,9 +41,8 @@ window.addEventListener("load", function () {
         .attr("x", width / 2)
         .attr("y", margin.top / 2)
         .attr("text-anchor", "middle")
-        .attr("font-size", 18)
-        .attr("font-weight", "bold")
-        .text("Physical Sales");
+        .text("Square Enix Sales")
+        .attr("class", "title-size");
 
     // -----------------------------
     // LOAD CSV
@@ -82,7 +81,8 @@ window.addEventListener("load", function () {
             .attr("x", plotWidth / 2)
             .attr("y", plotHeight + 40)
             .attr("text-anchor", "middle")
-            .text("Year");
+            .text("Year")
+            .attr("class", "label-size");
 
         g.append("g").call(d3.axisLeft(y));
         g.append("text")
@@ -91,7 +91,8 @@ window.addEventListener("load", function () {
             .attr("y", -45)
             .attr("text-anchor", "middle")
            // tester
-            .text("Percentage (%)");
+            .text("Percentage (%)")
+            .attr("class", "label-size");
 
         const line = d3.line()
             .x(d => x(d.Year))

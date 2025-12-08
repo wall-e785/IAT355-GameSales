@@ -38,7 +38,7 @@ h1, h2, h3, h4{
     color: white;
 }
 
-p, a, label, button{
+p, a, label, button, text{
     font-family: "GT America", sans-serif;
     color: white;
 }
@@ -204,16 +204,17 @@ header a{
 #landscape-grid, #landscape-grid-two{
     display: grid;
     grid-template-columns: 1fr;
-    margin-top: 2rem;
+    margin-top: 0rem;
 }
 
 .logo-header{
     margin-bottom: .5rem;
+    font-size: 1.6rem;
 }
 
 .logo{
     border-radius: 0;
-    max-width: 75%;
+    max-width: 50%;
     height: auto;
     margin-bottom: 1rem;
 }
