@@ -251,6 +251,11 @@ header a{
     column-gap: 3rem;
 }
 
+#why-matter{
+    max-width: 100%;
+    height: auto;
+}
+
 
 #conclusion-grid{
     display: grid;
@@ -411,6 +416,17 @@ footer p{
         display: grid;
         grid-template-columns: 1fr;
         margin-top: 2rem;
+    }
+
+    .logo-header{
+        margin-bottom: 1rem;
+    }
+
+    .logo{
+        border-radius: 0;
+        max-width: 50%;
+        height: auto;
+        margin-bottom: 1rem;
     }
 
     #visComparison, #visNintendoSales{
@@ -595,6 +611,18 @@ footer p{
         margin-bottom: 1rem;
     }
 
+    .logo-header{
+        margin-bottom: 1rem;
+    }
+
+    .logo{
+        border-radius: 0;
+        max-width: 40%;
+        height: auto;
+        margin-bottom: 1rem;
+    }
+
+
     #piechart-container{
         display: flex;
         flex-direction: column;
@@ -627,6 +655,7 @@ footer p{
         background-color: var(--dark-blue);
         margin: 0;
         padding: 1rem 2rem;
+        margin-top: 7rem;
     }
 
     footer p{

@@ -60,10 +60,12 @@
             <h3>Intro</h3>
             <div id="intro-grid">
                 <!--responsive images referenced from: https://developer.mozilla.org/en-US/docs/Web/HTML/Guides/Responsive_images-->
-                <img srcset="img/physical-1000w.webp 1000w, img/physical-1700w.webp 1700w, img/physical-2500w.webp 2500w" 
-                    sizes="(max-width: 900px) 900px, (max-width: 1200px) 1200px, 2500px"
-                    src="img/physical-2500w.webp" 
-                    alt="Game Store Shelves">
+                <picture>
+                    <source media="(max-width: 56.188rem)" srcset="img/physical-1000w.webp">
+                    <source media="(max-width: 74.938rem)" srcset="img/physical-1700w.webp">
+                    <source media="(min-width: 75rem)" srcset="img/physical-2500w.webp">
+                    <img src="img/physical-2500w.webp" alt="Game Store Shelves" width="2500" height="1875">
+                </picture>
                 <div>
                     <p>The game industry has come a long way since the days of 80s arcades, with the boom of consoles and later pc gaming making gaming as much a matter of collection management as it was playing. People boasted about their vast game collections in similar ways to someone collecting trading cards or album records, with pride and enthusiasm. Services like Blockbuster and Rogers home video allowed for generations of gamers to try different games without purchasing, and stores like GameStop, Best Buy and Walmart dominated the sales of games due to a thriving game industry, through to 2010.</p>
                 </div>
@@ -167,15 +169,19 @@
         -->
 
         <section class="slide">
-            <h3>The lone outlier</h3>
-               <!-- <div id="visNintendoSales" class="vegalite-container"></div> -->
-                <div>
-                    <p>As with all things, there exists an outlier and in this case its name is Nintendo. During this period, Nintendo has had a much less sharp decline in game sales compared to other publishers and it mostly comes down to the fact that they only develop for a singular platform, their own console. Other factors include a tendency for people to want physical copies of their games due to poorly maintained and implemented storefronts and for sharing games with friends and family. Unlike other publishers, Nintendo has kept mostly even in terms of sales format, only since 2023, have digital sales for Nintendo outperformed physical, with less than 10% difference as of 2025. Nintendo as a company takes the approach of the physical format being important to the overall product, and are branching out into other media to support this. Nintendo sponsored symphonies, Nintendo theme parks, movies about Nintendo intellectual properties, and restaurants inspired by their creations are all becoming a part of their business strategy. </p>
-                </div> 
+           <div>
+                <h4 class="logo-header">Looking at</h4>
+                <img class="logo" src="img/nintendo.png" alt="nintendo logo image" width="638" height="157">
+                <p>As with all things, there exists an outlier and in this case its name is Nintendo. During this period, Nintendo has had a much less sharp decline in game sales compared to other publishers and it mostly comes down to the fact that they only develop for a singular platform, their own console. Other factors include a tendency for people to want physical copies of their games due to poorly maintained and implemented storefronts and for sharing games with friends and family. Unlike other publishers, Nintendo has kept mostly even in terms of sales format, only since 2023, have digital sales for Nintendo outperformed physical, with less than 10% difference as of 2025. Nintendo as a company takes the approach of the physical format being important to the overall product, and are branching out into other media to support this. Nintendo sponsored symphonies, Nintendo theme parks, movies about Nintendo intellectual properties, and restaurants inspired by their creations are all becoming a part of their business strategy. </p>
+            </div> 
         </section>
 
         <section class="slide">
-            <img src="img/why does this shift matter.png" alt="heading search image">
+            <picture>
+                <source media="(max-width: 37.438rem)" srcset="img/why_does_this_shift_matter_large_font.png">
+                <source media="(min-width: 37.439rem)" srcset="img/why does this shift matter.png">
+                <img id="why-matter" src="img/why does this shift matter.png" alt="Why does this shift matter?" width="2929" height="329">
+            </picture>
         </section>
 
         <section class="slide">
@@ -231,7 +237,12 @@
         <div class="content">
             <h3>Conclusion</h3>
             <div id="conclusion-grid">
-                <img src="img/digital-1920w.webp" alt="filler image" width="1920" height="1080">
+                <picture>
+                    <source media="(max-width: 56.188rem)" srcset="img/digital-750w.webp">
+                    <source media="(max-width: 74.938rem)" srcset="img/digital-1200w.webp">
+                    <source media="(min-width: 75rem)" srcset="img/digital-1920w.webp">
+                    <img src="img/digital-1920w.webp" alt="Digital Game Library" width="1920" height="1080">
+                </picture>
                 <p>The game market has forever been changed by the move to predominantly digital sales. The ease of access and variety of games has created a larger than ever before game community. While there are some negatives that need to be figured out in terms of ownership it will be interesting to see where the game industry heads to next.</p>
             </div>
         </div>
