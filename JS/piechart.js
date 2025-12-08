@@ -36,9 +36,12 @@ const labelArc = d3.arc().outerRadius(radius - 40).innerRadius(radius - 40);
 const innerCircleRadius = radius * 0.45;
 
 // ------------------- Legend -------------------
+
 const legend = svg.append("g")
                   .attr("class", "legend")
-                  .attr("transform", `translate(${width - 300}, 10)`); // position top-right
+                  .attr("transform", `translate(${width / 2 + 20}, ${height / 2 - radius + 10})`);
+                  // .attr("transform", `translate(${width - 600}, 10)`); 
+                  // position top-right, //600 works for full screen, other sizes need to be tested
 
 const legendData = ["Digital", "Physical"];
 
