@@ -97,7 +97,8 @@ window.addEventListener("load", function () {
             .text("Year")
             .attr("class", "label-size");
 
-        g.append("g").call(d3.axisLeft(y));
+        g.append("g").call(d3.axisLeft(y))
+            .style("color", "white");
         g.append("text")
             .attr("transform", "rotate(-90)")
             .attr("x", -plotHeight / 2)
