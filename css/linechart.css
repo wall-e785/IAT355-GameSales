@@ -40,3 +40,14 @@
   font-size: .5rem;
   color: var(--light-grey);
 }
+
+/* 900px */
+@media (min-width: 56.25rem) {
+  .label-size{
+    font-size: 1.2rem;
+  }
+
+  .tick-text-size{
+    font-size: .8rem;
+  }
+}
