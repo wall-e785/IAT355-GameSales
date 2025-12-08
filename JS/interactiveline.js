@@ -29,8 +29,7 @@ window.addEventListener("load", function () {
         .attr("preserveAspectRatio", "none");
 
     const g = svg.append("g")
-        .attr("transform", `translate(${margin.left},${margin.top})`)
-       // keep commented
+        .attr("transform", `translate(${margin.left},${margin.top})`);
 
     let data;
     let currentType = "Physical";
@@ -72,20 +71,14 @@ window.addEventListener("load", function () {
         drawChart(true);
     };
 
-    // document.getElementById("outlierBtn").onclick = () => {
-    //     drawOutlier();
-    // };
-
-    // -------------------------------
-    // BUTTON HANDLERS
-    // -------------------------------
-    d3.selectAll("#line-controls button").on("click", function() {
+    // Highlight active button
+    d3.selectAll("#line-controls button").on("click", function () {
         d3.selectAll("#line-controls button").classed("active", false);
         d3.select(this).classed("active", true);
     });
 
     // -----------------------------
-    // DRAW NORMAL CHART
+    // DRAW CHART
     // -----------------------------
     function drawChart(animate = false) {
 
@@ -97,11 +90,23 @@ window.addEventListener("load", function () {
         const x = d3.scaleLinear().domain(d3.extent(years)).range([0, plotWidth]);
         const y = d3.scaleLinear().domain([0, 100]).range([plotHeight, 0]);
 
-        // axes
-        g.append("g")
+        const isMobile = width <= 600;
+
+        // -----------------------------
+        // X AXIS
+        // -----------------------------
+        const xAxis = g.append("g")
             .attr("transform", `translate(0,${plotHeight})`)
             .call(d3.axisBottom(x).tickFormat(d3.format("d")))
             .attr("class", "tick-text-size");
+
+        if (isMobile) {
+            xAxis.selectAll("text")
+                .attr("transform", "rotate(-90)")
+                .style("text-anchor", "end")
+                .attr("dx", "-0.8em")
+                .attr("dy", "-0.3em");
+        }
 
         g.append("text")
             .attr("x", plotWidth / 2)
@@ -110,10 +115,13 @@ window.addEventListener("load", function () {
             .text("Year")
             .attr("class", "label-size");
 
-        g.append("g")
+        // -----------------------------
+        // Y AXIS (NORMAL)
+        // -----------------------------
+        const yAxis = g.append("g")
             .call(d3.axisLeft(y))
             .attr("class", "tick-text-size");
-            
+
         g.append("text")
             .attr("transform", "rotate(-90)")
             .attr("x", -plotHeight / 2)
@@ -122,6 +130,9 @@ window.addEventListener("load", function () {
             .text("Percentage (%)")
             .attr("class", "label-size");
 
+        // -----------------------------
+        // LINES + LABELS
+        // -----------------------------
         const line = d3.line()
             .x(d => x(d.Year))
             .y(d => y(d.value))
@@ -138,7 +149,6 @@ window.addEventListener("load", function () {
             .append("g")
             .attr("class", "dev");
 
-        // lines
         devGroups.append("path")
             .attr("fill", "none")
             .attr("stroke-width", 3)
@@ -154,7 +164,6 @@ window.addEventListener("load", function () {
                 return d3.interpolatePath(d3.select(this).attr("d"), line(newData));
             });
 
-        // labels
         devGroups.append("text")
             .attr("fill", d => color(d[0]))
             .attr("font-size", 14)
@@ -176,7 +185,7 @@ window.addEventListener("load", function () {
     }
 
     // -----------------------------
-    // ON WINDOW RESIZE
+    // HANDLE RESIZE
     // -----------------------------
     window.addEventListener("resize", () => {
 
