@@ -729,6 +729,10 @@ footer p{
         align-self: center;
     }
 
+    .center-justify{
+        justify-self: center;
+    }
+
     #title{
         display: flex;
         flex-direction: column;
