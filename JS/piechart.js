@@ -172,7 +172,7 @@ d3.csv("datasets/piechartdata.csv").then(rawData => {
         if(selectedButtonIndex >= 0){
           let currPublisher = publishers[selectedButtonIndex].Publisher;
           d3.select(`#btn-${selectedButtonIndex}`)
-          .attr("src", `img/buttons/${currPublisher}.png`)
+          .attr("src", `img/buttons/${currPublisher}-700w.webp`)
         }
         d3.select(this).attr("src", `img/buttons/${d.Publisher}_select-700w.webp`); 
         selectedButtonIndex = i;
