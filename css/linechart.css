@@ -1,4 +1,4 @@
-#chart {
+#chart1, #chart2, #chart3, #chart4 {
   display: flex;
   justify-content: center;
 }
@@ -23,4 +23,20 @@
 #line-controls button.active {
   background: var(--bright-blue);
   color: white;
+}
+
+.title-size{
+  font-size: 1.2rem;
+  font-weight: bold;
+  fill: white;
+}
+
+.label-size{
+  font-size: 1rem;
+  fill: white;
+}
+
+.tick-text-size{
+  font-size: .5rem;
+  color: var(--light-grey);
 }

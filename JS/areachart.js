@@ -208,20 +208,21 @@ d3.csv("datasets/US_SalesData.csv").then(data => {
       .on("mouseout", () => tooltip.style("opacity",0))
       .transition()
       .duration(600)
-      .attr("r", 6)
+      .attr("r", 3)
       .attr("cy", d => y(d.Sales));
 
     circles.transition()
       .duration(600)
       .attr("cx", d => x(d.Year) + x.bandwidth()/2)
       .attr("cy", d => y(d.Sales))
-      .attr("r", 6)
+      .attr("r", 3)
       .attr("fill", d => colors[d.Format]);
 
     circles.exit()
       .transition().duration(300)
       .attr("r",0)
       .remove();
+
   }
 
   // Initial draw
@@ -235,42 +236,60 @@ d3.csv("datasets/US_SalesData.csv").then(data => {
     d3.select(this).classed("active", true);
     let mode = d3.select(this).attr("data-mode");
 
+    //select the labels on the chart
+    let physicalLabel = d3.select("#Physical-areachart");
+    let digitalLabel = d3.select("#Digital-areachart");
+
+    //hide labels depending on the mode
+    if(mode == "Both"){
+      physicalLabel.classed("hidden", false);
+      digitalLabel.classed("hidden", false);
+    }else if(mode == "Physical"){
+      physicalLabel.classed("hidden", false);
+      digitalLabel.classed("hidden", true);
+    }else if(mode == "Digital"){
+      physicalLabel.classed("hidden", true);
+      digitalLabel.classed("hidden", false);
+    }
+
     update(mode);
   });
 
-  // -------------------------------
-  // LEGEND (top-right)
-  // -------------------------------
-  const legend = svg.append("g")
-    .attr("class", "legend")
-    .attr("transform", `translate(${width - 120}, -30)`); // moved up
+  
+    //draw legend
+    const legend = svg.append("g")
+      .attr("class", "legend")
+      .attr("transform", `translate(0, 0)`); // rpositioning the legend labels
 
-  const legendItems = [
-    { label: "Physical", color: colors.Physical },
-    { label: "Digital", color: colors.Digital }
-  ];
+    const legendItems = [
+      { label: "Physical", color: colors.Physical },
+      { label: "Digital", color: colors.Digital }
+    ];
 
-  legend.selectAll("rect.legend-color")
-    .data(legendItems)
-    .enter()
-    .append("rect")
-    .attr("class", "legend-color")
-    .attr("x", 0)
-    .attr("y", (d, i) => i * 25)
-    .attr("width", 18)
-    .attr("height", 18)
-    .attr("fill", d => d.color);
+    // legend.selectAll("rect.legend-color")
+    //   .data(legendItems)
+    //   .enter()
+    //   .append("rect")
+    //   .attr("class", "legend-color")
+    //   .attr("x", 0)
+    //   .attr("y", (d, i) => i * 25)
+    //   .attr("width", 18)
+    //   .attr("height", 18)
+    //   .attr("fill", d => d.color);
 
-  legend.selectAll("text.legend-label")
-    .data(legendItems)
-    .enter()
-    .append("text")
-    .attr("class", "legend-label")
-    .attr("x", 28)
-    .attr("y", (d, i) => i * 25 + 14)
-    .text(d => d.label)
-    .style("font-size", "14px")
-    .style("fill", "white")
-    .style("font-family", "Arial, sans-serif");
+    legend.selectAll("text.legend-label")
+      .data(legendItems)
+      .enter()
+      .append("text")
+      .attr("class", "legend-label")
+      .attr("id", d => d.label + "-areachart") //used to identify labels for hiding/showing
+      .attr("x", 5)
+      .attr("y", (d, i) => i * 80 + 10)
+      .attr("z", 5) //add z value so the labels always render on top of everything else
+      .text(d => d.label)
+      .style("font-size", "14px")
+      .style("fill", "white")
+      .style("font-weight", "bold")
+      .style("font-family", "GT America, Arial");
 
 });

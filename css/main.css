@@ -38,7 +38,7 @@ h1, h2, h3, h4{
     color: white;
 }
 
-p, a, label, button{
+p, a, label, button, text{
     font-family: "GT America", sans-serif;
     color: white;
 }
@@ -170,6 +170,11 @@ header a{
     margin-right: 0;
 }
 
+#decline img{
+    max-width: 100%;
+    height: auto;
+}
+
 .vegalite-container{
     width: 100%;
     max-width: 100%;
@@ -199,7 +204,19 @@ header a{
 #landscape-grid, #landscape-grid-two{
     display: grid;
     grid-template-columns: 1fr;
-    margin-top: 2rem;
+    margin-top: 0rem;
+}
+
+.logo-header{
+    margin-bottom: .5rem;
+    font-size: 1.6rem;
+}
+
+.logo{
+    border-radius: 0;
+    max-width: 50%;
+    height: auto;
+    margin-bottom: 1rem;
 }
 
 #visComparison, #visNintendoSales{
@@ -233,6 +250,11 @@ header a{
     display: grid;
     grid-template-columns: 1fr;
     column-gap: 3rem;
+}
+
+#why-matter{
+    max-width: 100%;
+    height: auto;
 }
 
 
@@ -395,6 +417,17 @@ footer p{
         display: grid;
         grid-template-columns: 1fr;
         margin-top: 2rem;
+    }
+
+    .logo-header{
+        margin-bottom: 1rem;
+    }
+
+    .logo{
+        border-radius: 0;
+        max-width: 50%;
+        height: auto;
+        margin-bottom: 1rem;
     }
 
     #visComparison, #visNintendoSales{
@@ -579,6 +612,18 @@ footer p{
         margin-bottom: 1rem;
     }
 
+    .logo-header{
+        margin-bottom: 1rem;
+    }
+
+    .logo{
+        border-radius: 0;
+        max-width: 40%;
+        height: auto;
+        margin-bottom: 1rem;
+    }
+
+
     #piechart-container{
         display: flex;
         flex-direction: column;
@@ -611,6 +656,7 @@ footer p{
         background-color: var(--dark-blue);
         margin: 0;
         padding: 1rem 2rem;
+        margin-top: 7rem;
     }
 
     footer p{
