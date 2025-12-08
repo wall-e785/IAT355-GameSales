@@ -84,7 +84,7 @@ d3.csv("datasets/US_SalesData.csv").then(data => {
   svg.append("g")
     .attr("class","yaxis")
     .call(d3.axisLeft(y));
-
+    
   // -------------------------------
   // UPDATE FUNCTION (bars + lines + circles)
   // -------------------------------

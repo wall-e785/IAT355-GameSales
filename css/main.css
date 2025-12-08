@@ -321,6 +321,7 @@ footer p{
     h3{
         font-size: 1.8rem;
         margin-bottom: 1.5rem;
+        padding-top: 0;
     }
 
     h4{
@@ -711,6 +712,21 @@ footer p{
         display: grid;
         grid-template-columns: 1fr 1fr;
         column-gap: 1rem;
+    }
+
+    .onefr-twofr-grid{
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        column-gap: 1rem;
+    }
+
+    .onefr-twofr-grid h4{
+        margin: 0;
+        padding: 0;
+    }
+
+    .center-align{
+        align-self: center;
     }
 
     #title{
