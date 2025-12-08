@@ -73,6 +73,7 @@ window.addEventListener("load", function () {
         const x = d3.scaleLinear().domain(d3.extent(years)).range([0, plotWidth]);
         const y = d3.scaleLinear().domain([0, 100]).range([plotHeight, 0]);
 
+
         g.append("g")
             .attr("transform", `translate(0,${plotHeight})`)
             .call(d3.axisBottom(x).tickFormat(d3.format("d")));
