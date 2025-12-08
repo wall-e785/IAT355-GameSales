@@ -3,7 +3,7 @@ window.addEventListener("load", function () {
     // -----------------------------
     // GET REAL SIZE OF #chart
     // -----------------------------
-    const container = d3.select("#chart1");
+    const container = d3.select("#chart2");
 
     function getSize() {
         const rect = container.node().getBoundingClientRect();
@@ -33,7 +33,6 @@ window.addEventListener("load", function () {
        // keep commented
 
     let data;
-    let currentType = "Physical";
 
     // -----------------------------
     // FORMAT LABEL
@@ -60,125 +59,17 @@ window.addEventListener("load", function () {
         drawChart();
     });
 
-    // -----------------------------
-    // BUTTONS
-    // -----------------------------
-    document.getElementById("physicalBtn").onclick = () => {
-        currentType = "Physical";
-        drawChart(true);
-    };
 
-    document.getElementById("digitalBtn").onclick = () => {
-        currentType = "Digital";
-        drawChart(true);
-    };
-
-    // document.getElementById("outlierBtn").onclick = () => {
-    //     drawOutlier();
-    // };
-
-    // -------------------------------
-    // BUTTON HANDLERS
-    // -------------------------------
-    d3.selectAll("#line-controls button").on("click", function() {
-        d3.selectAll("#line-controls button").classed("active", false);
-        d3.select(this).classed("active", true);
-    });
 
     // -----------------------------
-    // DRAW NORMAL CHART
+    // DRAW CAPCOM CHART
     // -----------------------------
-    function drawChart(animate = false) {
+    function drawChart() {
 
         g.selectAll("*").remove();
-        formatLabel.text(currentType === "Physical" ? "Physical Sales" : "Digital Sales");
+        formatLabel.text("Capcom Sales");
 
-        const years = [...new Set(data.map(d => d.Year))];
-
-        const x = d3.scaleLinear().domain(d3.extent(years)).range([0, plotWidth]);
-        const y = d3.scaleLinear().domain([0, 100]).range([plotHeight, 0]);
-
-        // axes
-        g.append("g")
-            .attr("transform", `translate(0,${plotHeight})`)
-            .call(d3.axisBottom(x).tickFormat(d3.format("d")));
-
-        g.append("text")
-            .attr("x", plotWidth / 2)
-            .attr("y", plotHeight + 40)
-            .attr("text-anchor", "middle")
-            .text("Year");
-
-        g.append("g")
-            .call(d3.axisLeft(y));
-
-        g.append("text")
-            .attr("transform", "rotate(-90)")
-            .attr("x", -plotHeight / 2)
-            .attr("y", -45)
-            .attr("text-anchor", "middle")
-            .text("Percentage (%)");
-
-        const line = d3.line()
-            .x(d => x(d.Year))
-            .y(d => y(d.value))
-            .curve(d3.curveMonotoneX);
-
-        const groups = d3.groups(data, d => d.Developer);
-        const color = d3.scaleOrdinal()
-            .domain(groups.map(d => d[0]))
-            .range(["#1f77b4", "#e41a1c", "#4daf4a"]);
-
-        const devGroups = g.selectAll(".dev")
-            .data(groups)
-            .enter()
-            .append("g")
-            .attr("class", "dev");
-
-        // lines
-        devGroups.append("path")
-            .attr("fill", "none")
-            .attr("stroke-width", 3)
-            .attr("stroke", d => color(d[0]))
-            .attr("d", d => line(d[1].map(p => ({ Year: p.Year, value: 0 }))))
-            .transition()
-            .duration(1000)
-            .attrTween("d", function (d) {
-                const newData = d[1].map(p => ({
-                    Year: p.Year,
-                    value: currentType === "Physical" ? p.Physical : p.Digital
-                }));
-                return d3.interpolatePath(d3.select(this).attr("d"), line(newData));
-            });
-
-        // labels
-        devGroups.append("text")
-            .attr("fill", d => color(d[0]))
-            .attr("font-size", 14)
-            .attr("dy", "0.35em")
-            .text(d => d[0])
-            .attr("transform", d => {
-                const last = d[1][d[1].length - 1];
-                return `translate(${x(last.Year) + 6},${y(0)})`;
-            })
-            .transition()
-            .duration(1000)
-            .attr("transform", d => {
-                const last = d[1][d[1].length - 1];
-                const v = currentType === "Physical" ? last.Physical : last.Digital;
-                return `translate(${x(last.Year) + 6},${y(v)})`;
-            });
-    }
-
-    // -----------------------------
-    // DRAW OUTLIER CHART
-    // -----------------------------
-    function drawOutlier() {
-
-        g.selectAll("*").remove();
-        formatLabel.text("Nintendo Sales");
-
-        const chartData = data.filter(d => d.Developer === "Nintendo");
+        const chartData = data.filter(d => d.Developer === "Capcom");
         const years = [...new Set(chartData.map(d => d.Year))];
 
         const x = d3.scaleLinear().domain(d3.extent(years)).range([0, plotWidth]);
