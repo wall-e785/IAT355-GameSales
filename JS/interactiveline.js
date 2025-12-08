@@ -90,7 +90,7 @@ window.addEventListener("load", function () {
         const x = d3.scaleLinear().domain(d3.extent(years)).range([0, plotWidth]);
         const y = d3.scaleLinear().domain([0, 100]).range([plotHeight, 0]);
 
-        const isMobile = width <= 600;
+        const isMobile = width < 600;
 
         // -----------------------------
         // X AXIS

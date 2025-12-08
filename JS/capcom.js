@@ -74,10 +74,21 @@ window.addEventListener("load", function () {
         const x = d3.scaleLinear().domain(d3.extent(years)).range([0, plotWidth]);
         const y = d3.scaleLinear().domain([0, 100]).range([plotHeight, 0]);
 
-        g.append("g")
+        
+        const isMobile = width < 600;
+
+        const xAxis = g.append("g")
             .attr("transform", `translate(0,${plotHeight})`)
             .call(d3.axisBottom(x).tickFormat(d3.format("d")))
             .attr("class", "tick-text-size");
+
+        if (isMobile) {
+        xAxis.selectAll("text")
+            .attr("transform", "rotate(-90)")
+            .style("text-anchor", "end")
+            .attr("dx", "-0.8em")
+            .attr("dy", "-0.3em");
+        }
 
         g.append("text")
             .attr("x", plotWidth / 2)

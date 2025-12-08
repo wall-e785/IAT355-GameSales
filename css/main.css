@@ -160,6 +160,13 @@ header a{
     height: auto;
 }
 
+
+.two-col-image{
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 1rem;
+}
+
 #decline-grid{
     display: grid;
     grid-template-columns: 1fr;
