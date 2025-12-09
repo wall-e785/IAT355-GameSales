@@ -10,6 +10,8 @@ function getSize() {
 
 let { width, height } = getSize();
 
+
+
 // Chart dimensions
 const margin = { top: 60, right: 100, bottom: 60, left: 60 };
 // const width = 950 - margin.left - margin.right;

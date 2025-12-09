@@ -45,10 +45,38 @@
   fill: white;
 }
 
+#pie-mobile-legend{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 3rem;
+}
+
+.legend-label-flex{
+  display: flex;
+  column-gap: .5rem;
+}
+
+#digital-square{
+  background-color: #1f77b4;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+#physical-square{
+  background-color: #d40b0bff;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
 /* 600px */
 @media (min-width: 37.5rem) {
   .pub-btn {
     width: 20vw;
+  }
+
+  #pie-mobile-legend{
+    display: none;
   }
 }
 

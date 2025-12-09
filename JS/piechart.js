@@ -14,7 +14,6 @@ let { width, height } = getSize();
 
 let radius = Math.min(width/2, height/2);
 
-
 svg
   .attr("width", "100%")
   .attr("height", "100%")
@@ -37,34 +36,37 @@ const innerCircleRadius = radius * 0.45;
 
 // ------------------- Legend -------------------
 
-const legend = svg.append("g")
+const isMobile = window.innerWidth < 600;
+
+if (!isMobile) {
+  const legend = svg.append("g")
                   .attr("class", "legend")
                   .attr("transform", `translate(${width / 2 + 20}, ${height / 2 - radius + 10})`);
                   // .attr("transform", `translate(${width - 600}, 10)`); 
                   // position top-right, //600 works for full screen, other sizes need to be tested
 
-const legendData = ["Digital", "Physical"];
+  const legendData = ["Digital", "Physical"];
 
-legend.selectAll("rect")
-  .data(legendData)
-  .enter()
-  .append("rect")
-    .attr("x", (d, i) => i * 100 + 75)
-    .attr("y", 0)
-    .attr("width", 18)
-    .attr("height", 18)
-    .attr("fill", d => color(d));
+  legend.selectAll("rect")
+    .data(legendData)
+    .enter()
+    .append("rect")
+      .attr("x", (d, i) => i * 100 + 75)
+      .attr("y", 0)
+      .attr("width", 18)
+      .attr("height", 18)
+      .attr("fill", d => color(d));
 
-legend.selectAll("text")
-  .data(legendData)
-  .enter()
-  .append("text")
-    .attr("x", (d, i) => i * 100 + 100)
-    .attr("y", 12)
-    .text(d => d)
-    .attr("class", "legend-label");
+  legend.selectAll("text")
+    .data(legendData)
+    .enter()
+    .append("text")
+      .attr("x", (d, i) => i * 100 + 100)
+      .attr("y", 12)
+      .text(d => d)
+      .attr("class", "legend-label");
 
-    
+}
 
 // ------------------- Load Data -------------------
 d3.csv("datasets/piechartdata.csv").then(rawData => {
