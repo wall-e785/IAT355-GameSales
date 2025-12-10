@@ -1,5 +1,7 @@
 /* used to draw the square enix line chart*/
-/* this script was created with assistance from ChatGPT **riley add here link + how we used** */
+/* this script was created with assistance from ChatGPT https://chatgpt.com/share/69360126-de6c-8013-9397-5139d77b9309
+The chatgpt was originally done to make it possible to animate between charts on button press. Later the animation was removed and only
+used for a singular chart as it was better for our narrative flow to separate them */
 /*this script was derived from the interactiveline.js script */
 
 
@@ -18,6 +20,7 @@ window.addEventListener("load", function () {
         };
     }
 
+    //dimension definitions for reuse and responsiveness
     let { width, height } = getSize();
     const margin = { top: 50, right: 120, bottom: 50, left: 60 };
 
@@ -35,7 +38,7 @@ window.addEventListener("load", function () {
 
     const g = svg.append("g")
         .attr("transform", `translate(${margin.left},${margin.top})`)
-       // keep commented
+       
 
     let data;
 
@@ -78,7 +81,7 @@ window.addEventListener("load", function () {
         const x = d3.scaleLinear().domain(d3.extent(years)).range([0, plotWidth]);
         const y = d3.scaleLinear().domain([0, 100]).range([plotHeight, 0]);
 
-        
+        //variable for mobile control
         const isMobile = window.innerWidth < 600;
 
         const xAxis = g.append("g")
@@ -86,6 +89,7 @@ window.addEventListener("load", function () {
             .call(d3.axisBottom(x).tickFormat(d3.format("d")))
             .attr("class", "tick-text-size");
 
+        //mobile controller
         if (isMobile) {
         xAxis.selectAll("text")
             .attr("transform", "rotate(-90)")
@@ -94,6 +98,7 @@ window.addEventListener("load", function () {
             .attr("dy", "-0.3em");
         }
 
+        //axes
         g.append("text")
             .attr("x", plotWidth / 2)
             .attr("y", plotHeight + 40)
@@ -117,6 +122,7 @@ window.addEventListener("load", function () {
             .y(d => y(d.value))
             .curve(d3.curveMonotoneX);
 
+        //pre-defined lines and colours
         const lines = [
             { type: "Physical", values: chartData.map(d => ({ Year: d.Year, value: d.Physical })), color: "#1f77b4" },
             { type: "Digital", values: chartData.map(d => ({ Year: d.Year, value: d.Digital })), color: "#e41a1c" }
@@ -139,6 +145,7 @@ window.addEventListener("load", function () {
                 return d3.interpolatePath(d3.select(this).attr("d"), line(d.values));
             });
 
+        //annotation at end of lines
         groups.append("text")
             .attr("fill", d => d.color)
             .attr("font-size", 14)

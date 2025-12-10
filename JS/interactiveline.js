@@ -1,5 +1,6 @@
 /* used to draw the four different line charts.*/
-/* this script was created with assistance from ChatGPT **riley add here link + how we used** */
+/* this script was created with assistance from ChatGPT https://chatgpt.com/share/69360126-de6c-8013-9397-5139d77b9309
+This was used to create the animation of going between different charts on button press */
 /* we modified this script by seperating the outlier chart we had initially for a different section, and modifying it for the capcom + square enix analysis.*/
 
 window.addEventListener("load", function () {
@@ -17,6 +18,7 @@ window.addEventListener("load", function () {
         };
     }
 
+    //variable declaration for reusability and responsiveness
     let { width, height } = getSize();
     const margin = { top: 50, right: 120, bottom: 50, left: 60 };
 
@@ -85,7 +87,7 @@ window.addEventListener("load", function () {
     // DRAW CHART
     // -----------------------------
     function drawChart(animate = false) {
-
+        //controller for which chart is drawn
         g.selectAll("*").remove();
         formatLabel.text(currentType === "Physical" ? "Physical Sales" : "Digital Sales");
 
@@ -94,6 +96,7 @@ window.addEventListener("load", function () {
         const x = d3.scaleLinear().domain(d3.extent(years)).range([0, plotWidth]);
         const y = d3.scaleLinear().domain([0, 100]).range([plotHeight, 0]);
 
+        //responsiveness variable for mobile
         const isMobile = window.innerWidth < 600;
 
         // -----------------------------
@@ -104,6 +107,7 @@ window.addEventListener("load", function () {
             .call(d3.axisBottom(x).tickFormat(d3.format("d")))
             .attr("class", "tick-text-size");
 
+        //controller for mobile view
         if (isMobile) {
             xAxis.selectAll("text")
                 .attr("transform", "rotate(-90)")
@@ -143,6 +147,7 @@ window.addEventListener("load", function () {
             .curve(d3.curveMonotoneX);
 
         const groups = d3.groups(data, d => d.Developer);
+        //variable for colours of lines
         const color = d3.scaleOrdinal()
             .domain(groups.map(d => d[0]))
             .range(["#1f77b4", "#e41a1c", "#4daf4a"]);
@@ -168,6 +173,7 @@ window.addEventListener("load", function () {
                 return d3.interpolatePath(d3.select(this).attr("d"), line(newData));
             });
 
+        //Annotation at the end of lines
         devGroups.append("text")
             .attr("fill", d => color(d[0]))
             .attr("font-size", 14)

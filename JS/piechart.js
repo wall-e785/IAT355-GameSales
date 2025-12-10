@@ -1,5 +1,6 @@
 /* used to draw the piechart to compare different publishers */
-/* this script was created with assistance from ChatGPT **riley add here link + how we used** */
+/* this script was created with assistance from ChatGPT https://chatgpt.com/share/6936007e-61f4-8013-9a31-13776b100421
+This chat was used to help us animate the changing between pie charts and the creation of buttons from the csv data, as well as error checking */
 
 
 // ------------------- Setup -------------------
@@ -27,10 +28,12 @@ svg
 const g = svg.append("g")
              .attr("transform", `translate(${width / 2}, ${height / 2})`);
 
+//define the colours of the chart
 const color = d3.scaleOrdinal()
                 .domain(["Digital", "Physical"])
                 .range(["#1f77b4", "#d40b0bff"]);
 
+//define the size of the pie chart
 const pie = d3.pie().value(d => d.value);
 const arc = d3.arc().outerRadius(radius - 10).innerRadius(0);
 const labelArc = d3.arc().outerRadius(radius - 40).innerRadius(radius - 40);

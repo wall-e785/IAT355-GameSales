@@ -1,5 +1,9 @@
 /* used to draw the chart showing trends from 2009-2018*/
-/* this script was created with assistance from ChatGPT **riley add here link + how we used** */
+/* this script was created with assistance from ChatGPT 
+https://chatgpt.com/share/693601be-6f98-8013-9138-e39a5569f0dc
+Originally the gpt was used to error check vega-lite code, however due to issues
+with the flexibility of what we wanted with the visualizations, we used chatgpt to remake the charts in d3
+and perform error checking on the d3 */
 
 const svg = d3.select("#areachart");
 
@@ -164,6 +168,7 @@ d3.csv("datasets/US_SalesData.csv").then(data => {
     const lines = svg.selectAll("path.line")
       .data(lineData, d => d.key);
 
+    //when the lines enter from the bottom of the chart
     lines.enter()
       .append("path")
       .attr("class","line")
@@ -182,11 +187,13 @@ d3.csv("datasets/US_SalesData.csv").then(data => {
       .duration(800)
       .attr("stroke-dashoffset", 0);
 
+    //when the lines change
     lines.transition()
       .duration(800)
       .attr("stroke", d => colors[d.key])
       .attr("d", d => lineGen(d.values));
 
+    //when the lines leave the chart
     lines.exit()
       .transition().duration(300)
       .style("opacity",0)
@@ -196,10 +203,10 @@ d3.csv("datasets/US_SalesData.csv").then(data => {
     // Circles
     // ------------------------
     const circleData = lineData.flatMap(d => d.values);
-
+    
     const circles = svg.selectAll("circle.point")
       .data(circleData, d => d.Year + d.Format);
-
+    //draw for circles entering
     circles.enter()
       .append("circle")
       .attr("class","point")
@@ -207,25 +214,29 @@ d3.csv("datasets/US_SalesData.csv").then(data => {
       .attr("cy", height)
       .attr("r", 0)
       .attr("fill", d => colors[d.Format])
+      //open tooltip on mouse hover
       .on("mousemove", (event, d) => {
         tooltip.style("opacity",1)
           .html(`<strong>${d.Format}</strong><br>Year: ${d.Year}<br>Sales: ${d.Sales}%`)
           .style("left", event.pageX + 15 + "px")
           .style("top", event.pageY - 20 + "px");
       })
+      //close tooltip on mouse leave
       .on("mouseout", () => tooltip.style("opacity",0))
       .transition()
       .duration(600)
       .attr("r", 3)
       .attr("cy", d => y(d.Sales));
-
+    
+    //control for moving the circles
     circles.transition()
       .duration(600)
       .attr("cx", d => x(d.Year) + x.bandwidth()/2)
       .attr("cy", d => y(d.Sales))
       .attr("r", 3)
       .attr("fill", d => colors[d.Format]);
-
+    
+    //control for removing the circles
     circles.exit()
       .transition().duration(300)
       .attr("r",0)
