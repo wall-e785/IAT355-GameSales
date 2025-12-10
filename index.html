@@ -37,14 +37,26 @@
 <body>
     <header class="slide">
         <div id="top-nav">
-            <p>IAT355</p>
-            <nav>
+            <div id="hamburger-head">
+                <p>IAT355</p>
+                <a id="hamburger"><img src="img/hamburgericon.webp" alt="Menu" width="100" height="100"></a>
+            </div>
+            <nav id="nav-default">
                 <a href="#intro">Intro</a>
                 <a href="#decline">2009 to 2018</a>
                 <a href="#landscape">2018 to 2024</a>
                 <a href="#why">Why</a>
                 <a href="#conclusion">Conclusion</a>
             </nav>
+            <div>
+                <nav id="nav-mobile">
+                    <a href="#intro">Intro</a>
+                    <a href="#decline">2009 to 2018</a>
+                    <a href="#landscape">2018 to 2024</a>
+                    <a href="#why">Why</a>
+                    <a href="#conclusion">Conclusion</a>
+                </nav>
+            </div>
         </div>
         <section id="title">
             <h1>How Do You Game?</h1>
@@ -208,7 +220,7 @@
             </div>
         </section>
 
-        <section class="slide">
+        <section id="why" class="slide">
             <picture>
                 <source media="(max-width: 37.438rem)" srcset="img/why-1500w.webp">
                 <source media="(max-width: 74.938rem)" srcset="img/why-3000w.webp">
@@ -257,7 +269,7 @@
             </div>
         </section>
 
-        <section id="why" class="slide">
+        <section class="slide">
             <h3>Stats as of 2024</h3>
             <div id="pie-mobile-legend">
                 <div class="legend-label-flex">
@@ -314,5 +326,6 @@
     <script type="module" src="JS/squareenix.js"></script>
     <script type="module" src="JS/outlierline.js"></script>
     <script type="module" src="JS/areachart.js"></script>
+    <script type="module" src="JS/hamburger.js"></script>
 </body>
 </html>

@@ -124,6 +124,29 @@ header a{
     padding: .5rem 1rem 1rem 1rem;
 }
 
+#nav-default{
+    display: none;
+}
+
+#hamburger-head{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#hamburger img{
+    max-width: 2rem;
+    height: auto;
+}
+
+#nav-mobile{
+    flex-direction: column;
+}
+
+.hide{
+    display: none;
+}
+
 #title{
     display: flex;
     flex-direction: column;
@@ -359,6 +382,18 @@ footer p{
 
     header a{
         font-size: 1rem;
+    }
+
+    #nav-default{
+        display: flex;
+    }
+
+    #nav-mobile{
+        display: none;
+    }
+
+    #hamburger{
+        display: none;
     }
 
     #title{
