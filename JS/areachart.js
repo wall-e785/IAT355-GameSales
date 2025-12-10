@@ -1,5 +1,9 @@
+/* used to draw the chart showing trends from 2009-2018*/
+/* this script was created with assistance from ChatGPT **riley add here link + how we used** */
+
 const svg = d3.select("#areachart");
 
+//used to calculate the possible area for drawing the chart for responsiveness
 function getSize() {
   const rect = svg.node().getBoundingClientRect(); 
   return {

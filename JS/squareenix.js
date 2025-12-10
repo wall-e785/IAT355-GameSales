@@ -1,3 +1,8 @@
+/* used to draw the square enix line chart*/
+/* this script was created with assistance from ChatGPT **riley add here link + how we used** */
+/*this script was derived from the interactiveline.js script */
+
+
 window.addEventListener("load", function () {
 
     // -----------------------------

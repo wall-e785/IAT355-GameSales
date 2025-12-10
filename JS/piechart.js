@@ -1,3 +1,7 @@
+/* used to draw the piechart to compare different publishers */
+/* this script was created with assistance from ChatGPT **riley add here link + how we used** */
+
+
 // ------------------- Setup -------------------
 const svg = d3.select("#piechart");
 
@@ -36,8 +40,10 @@ const innerCircleRadius = radius * 0.45;
 
 // ------------------- Legend -------------------
 
+//responsiveness, we had issues with the built-in legend for smaller screen sizes.
 const isMobile = window.innerWidth < 600;
 
+//if the screen size is larger than mobile, draw the legend using JS. otherwise, there is a version drawn with HTML/CSS for mobile screens.
 if (!isMobile) {
   const legend = svg.append("g")
                   .attr("class", "legend")

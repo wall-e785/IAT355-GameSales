@@ -1,3 +1,4 @@
+/* styling for line charts (interactiveline, capcom, squareenix, outlierline)*/
 #chart1, #chart2, #chart3, #chart4 {
   display: flex;
   justify-content: center;

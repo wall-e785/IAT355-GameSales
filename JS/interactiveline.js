@@ -1,3 +1,7 @@
+/* used to draw the four different line charts.*/
+/* this script was created with assistance from ChatGPT **riley add here link + how we used** */
+/* we modified this script by seperating the outlier chart we had initially for a different section, and modifying it for the capcom + square enix analysis.*/
+
 window.addEventListener("load", function () {
 
     // -----------------------------

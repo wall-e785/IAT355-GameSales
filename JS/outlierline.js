@@ -1,3 +1,7 @@
+/* used to draw the nintendo outlier line chart*/
+/* this script was created with assistance from ChatGPT **riley add here link + how we used** */
+/*this script was derived from the interactiveline.js script */
+
 window.addEventListener("load", function () {
 
     // -----------------------------
