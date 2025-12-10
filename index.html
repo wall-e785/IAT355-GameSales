@@ -17,25 +17,9 @@
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/d3-interpolate-path@2.0.1/build/d3-interpolate-path.min.js"></script>
     <title>How Do You Game?</title>
-    <script>
-        const options = {
-            config: {},
-            init: (view) => {
-            view.tooltip(new vegaTooltip.Handler().call);
-            },
-            view: {
-            loader: vega.loader({
-                baseURL: "https://cdn.jsdelivr.net/npm/vega-datasets@2/",
-            }),
-            renderer: "canvas",
-            },
-        };
-        vl.register(vega, vegaLite, options);
-    </script>
 </head>
 
 <body>
-
     <a id="backtotop" href="#top"><img src="img/backtotop.webp" alt="Back to Top" width="200" height="200"></a>
 
     <header id="top" class="slide">
@@ -322,7 +306,6 @@
         </footer>
     </section>
 
-    <!-- <script type="module" src="JS/vis.js"></script> -->
     <script type="module" src="JS/piechart.js"></script>
     <script type="module" src="JS/interactiveline.js"></script>
     <script type="module" src="JS/capcom.js"></script>

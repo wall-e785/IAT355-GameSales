@@ -91,6 +91,7 @@ button{
     border-style: solid;
 }
 
+/* referenced positioning from: https://www.w3schools.com/css/tryit.asp?filename=trycss_position_fixed*/
 #backtotop{
     position: fixed;
     right: 1.5rem;
