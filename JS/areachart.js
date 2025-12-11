@@ -19,11 +19,10 @@ function getSize() {
 let { width, height } = getSize();
 
 
-
 // Chart dimensions
-const margin = { top: 60, right: 100, bottom: 60, left: 60 };
-// const width = 950 - margin.left - margin.right;
-// const height = 600 - margin.top - margin.bottom;
+const margin = { top: 0, right: 100, bottom: 60, left: 30 };
+const plotWidth  = width -50;
+const plotHeight = height - 20;
 
 // Colors for formats
 const colors = {
@@ -38,8 +37,9 @@ svg
   .attr("height", "100%")
   .attr("viewBox", `0 0 ${width} ${height}`)
   .attr("preserveAspectRatio", "xMidYMid meet")
-  .append("g")
-  .attr("transform", `translate(${margin.left}, ${margin.top})`);
+
+const g = svg.append("g")
+.attr("transform", `translate(${margin.left},${margin.top})`);
 
 // Tooltip
 const tooltip = d3.select("body")
@@ -72,12 +72,12 @@ d3.csv("datasets/US_SalesData.csv").then(data => {
 
   const x = d3.scaleBand()
     .domain(data.map(d => d.Year))
-    .range([0, width])
+    .range([0, plotWidth])
     .padding(0.1);
 
   const y = d3.scaleLinear()
     .domain([0, d3.max(flat, d => d.Sales)]).nice()
-    .range([height, 0]);
+    .range([plotHeight, 0]);
 
   const formatBand = d3.scaleBand()
     .domain(formats)
@@ -85,13 +85,13 @@ d3.csv("datasets/US_SalesData.csv").then(data => {
     .padding(0.2);
 
   // Axes
-  svg.append("g")
+  g.append("g")
     .attr("class","xaxis")
-    .attr("transform", `translate(0,${height})`)
+    .attr("transform", `translate(0,${plotHeight})`)
     .style("color", "white")
     .call(d3.axisBottom(x));
 
-  svg.append("g")
+  g.append("g")
     .attr("class","yaxis")
     .call(d3.axisLeft(y))
       .style("color", "white");
@@ -120,14 +120,14 @@ d3.csv("datasets/US_SalesData.csv").then(data => {
     // ------------------------
     // Bars
     // ------------------------
-    const bars = svg.selectAll("rect.bar")
+    const bars = g.selectAll("rect.bar")
       .data(barData, d => d.Year + d.Format);
 
     bars.enter()
       .append("rect")
       .attr("class","bar")
       .attr("x", d => x(d.Year) + formatBand(d.Format))
-      .attr("y", height)
+      .attr("y", plotHeight)
       .attr("width", formatBand.bandwidth())
       .attr("height", 0)
       .attr("fill", d => colors[d.Format])
@@ -142,18 +142,18 @@ d3.csv("datasets/US_SalesData.csv").then(data => {
       .transition()
       .duration(700)
       .attr("y", d => y(d.Sales))
-      .attr("height", d => height - y(d.Sales));
+      .attr("height", d => plotHeight - y(d.Sales));
 
     bars.transition()
       .duration(700)
       .attr("x", d => x(d.Year) + formatBand(d.Format))
       .attr("y", d => y(d.Sales))
       .attr("width", formatBand.bandwidth())
-      .attr("height", d => height - y(d.Sales));
+      .attr("height", d => plotHeight - y(d.Sales));
 
     bars.exit()
       .transition().duration(500)
-      .attr("y", height)
+      .attr("y", plotHeight)
       .attr("height", 0)
       .remove();
 
@@ -165,7 +165,7 @@ d3.csv("datasets/US_SalesData.csv").then(data => {
       .y(d => y(d.Sales))
       .curve(d3.curveMonotoneX);
 
-    const lines = svg.selectAll("path.line")
+    const lines = g.selectAll("path.line")
       .data(lineData, d => d.key);
 
     //when the lines enter from the bottom of the chart
@@ -204,14 +204,14 @@ d3.csv("datasets/US_SalesData.csv").then(data => {
     // ------------------------
     const circleData = lineData.flatMap(d => d.values);
     
-    const circles = svg.selectAll("circle.point")
+    const circles = g.selectAll("circle.point")
       .data(circleData, d => d.Year + d.Format);
     //draw for circles entering
     circles.enter()
       .append("circle")
       .attr("class","point")
       .attr("cx", d => x(d.Year) + x.bandwidth()/2)
-      .attr("cy", height)
+      .attr("cy", plotHeight)
       .attr("r", 0)
       .attr("fill", d => colors[d.Format])
       //open tooltip on mouse hover
@@ -302,8 +302,8 @@ d3.csv("datasets/US_SalesData.csv").then(data => {
       .append("text")
       .attr("class", "legend-label")
       .attr("id", d => d.label + "-areachart") //used to identify labels for hiding/showing
-      .attr("x", 5)
-      .attr("y", (d, i) => i * 90 + 10)
+      .attr("x", 35)
+      .attr("y", (d, i) => i * 85 + 5)
       .attr("z", 5) //add z value so the labels always render on top of everything else
       .text(d => d.label);
 
