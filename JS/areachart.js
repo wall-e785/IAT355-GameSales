@@ -5,6 +5,11 @@ Originally the gpt was used to error check vega-lite code, however due to issues
 with the flexibility of what we wanted with the visualizations, we used chatgpt to remake the charts in d3
 and perform error checking on the d3 */
 
+/*this chart had issues with responsiveness, specifically the plot was drawing larger than its SVG container. We further prompted ChatGPT for a solution, which we loosely referenced.
+https://chatgpt.com/share/693a11f1-2eec-800d-b7b0-b522aa89d919 
+
+We used if statements to change the margins/width/height depending on our one-column or two-column grid.*/
+
 const svg = d3.select("#areachart");
 
 //used to calculate the possible area for drawing the chart for responsiveness
