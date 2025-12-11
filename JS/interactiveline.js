@@ -93,7 +93,7 @@ window.addEventListener("load", function () {
 
         const years = [...new Set(data.map(d => d.Year))];
 
-        const x = d3.scaleLinear().domain(d3.extent(years)).range([0, plotWidth]);
+        const x = d3.scalePoint().domain(years).range([0, plotWidth]);
         const y = d3.scaleLinear().domain([0, 100]).range([plotHeight, 0]);
 
         //responsiveness variable for mobile

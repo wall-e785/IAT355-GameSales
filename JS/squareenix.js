@@ -78,7 +78,7 @@ window.addEventListener("load", function () {
         const chartData = data.filter(d => d.Developer === "Square Enix");
         const years = [...new Set(chartData.map(d => d.Year))];
 
-        const x = d3.scaleLinear().domain(d3.extent(years)).range([0, plotWidth]);
+        const x = d3.scalePoint().domain(years).range([0, plotWidth]);
         const y = d3.scaleLinear().domain([0, 100]).range([plotHeight, 0]);
 
         //variable for mobile control
