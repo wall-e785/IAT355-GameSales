@@ -48,6 +48,10 @@
   font-weight: bold;
 }
 
+.axis-tick-label{
+  font-size: .4rem;
+}
+
 /* 600px */
 @media (min-width: 37.5rem) {
   .legend-label{

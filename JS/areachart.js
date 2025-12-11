@@ -20,9 +20,17 @@ let { width, height } = getSize();
 
 
 // Chart dimensions
-const margin = { top: 0, right: 100, bottom: 60, left: 30 };
-const plotWidth  = width -50;
-const plotHeight = height - 20;
+let margin = { top: 10, right: 100, bottom: 0, left: 30 };
+let plotWidth  = width -50;
+let plotHeight = height - 30;
+
+//used to recalculate margin for larger screen sizes (2 column grid)
+const isLarge = window.innerWidth >= 1200;
+if(isLarge){
+  margin = { top: 0, right: 100, bottom: 60, left: 30 };
+  plotWidth  = width -50;
+  plotHeight = height - 20;
+}
 
 // Colors for formats
 const colors = {
@@ -89,12 +97,14 @@ d3.csv("datasets/US_SalesData.csv").then(data => {
     .attr("class","xaxis")
     .attr("transform", `translate(0,${plotHeight})`)
     .style("color", "white")
-    .call(d3.axisBottom(x));
+    .call(d3.axisBottom(x))
+    .attr("class", "axis-tick-label");
 
   g.append("g")
     .attr("class","yaxis")
     .call(d3.axisLeft(y))
-      .style("color", "white");
+      .style("color", "white")
+      .attr("class", "axis-tick-label");
 
     
   // -------------------------------
@@ -296,7 +306,8 @@ d3.csv("datasets/US_SalesData.csv").then(data => {
     //   .attr("height", 18)
     //   .attr("fill", d => d.color);
 
-    legend.selectAll("text.legend-label")
+    if(isLarge){
+      legend.selectAll("text.legend-label")
       .data(legendItems)
       .enter()
       .append("text")
@@ -306,6 +317,16 @@ d3.csv("datasets/US_SalesData.csv").then(data => {
       .attr("y", (d, i) => i * 85 + 5)
       .attr("z", 5) //add z value so the labels always render on top of everything else
       .text(d => d.label);
-
-
+    }else{
+      legend.selectAll("text.legend-label")
+      .data(legendItems)
+      .enter()
+      .append("text")
+      .attr("class", "legend-label")
+      .attr("id", d => d.label + "-areachart") //used to identify labels for hiding/showing
+      .attr("x", 35)
+      .attr("y", (d, i) => i * 75 + 20)
+      .attr("z", 5) //add z value so the labels always render on top of everything else
+      .text(d => d.label);
+    }
 });
