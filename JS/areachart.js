@@ -296,8 +296,8 @@ d3.csv("datasets/US_SalesData.csv").then(data => {
       .attr("transform", `translate(0, 0)`); // rpositioning the legend labels
 
     const legendItems = [
-      { label: "Physical", color: colors.Physical },
-      { label: "Digital", color: colors.Digital }
+      { label: "Digital", color: colors.Digital },
+      { label: "Physical", color: colors.Physical }
     ];
 
     // legend.selectAll("rect.legend-color")
@@ -318,8 +318,8 @@ d3.csv("datasets/US_SalesData.csv").then(data => {
       .append("text")
       .attr("class", "legend-label")
       .attr("id", d => d.label + "-areachart") //used to identify labels for hiding/showing
-      .attr("x", 35)
-      .attr("y", (d, i) => i * 85 + 5)
+      .attr("x", plotWidth)
+      .attr("y", (d, i) => i * 90 + 5)
       .attr("z", 5) //add z value so the labels always render on top of everything else
       .text(d => d.label);
     }else{
@@ -329,7 +329,7 @@ d3.csv("datasets/US_SalesData.csv").then(data => {
       .append("text")
       .attr("class", "legend-label")
       .attr("id", d => d.label + "-areachart") //used to identify labels for hiding/showing
-      .attr("x", 35)
+      .attr("x", plotWidth - 10)
       .attr("y", (d, i) => i * 75 + 20)
       .attr("z", 5) //add z value so the labels always render on top of everything else
       .text(d => d.label);

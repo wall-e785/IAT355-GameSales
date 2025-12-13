@@ -73,7 +73,7 @@ if (!isMobile) {
       .attr("x", (d, i) => i * 100 + 100)
       .attr("y", 12)
       .text(d => d)
-      .attr("class", "legend-label");
+      .attr("class", "piechart-legend-label");
 
 }
 
@@ -138,8 +138,8 @@ d3.csv("datasets/piechartdata.csv").then(rawData => {
                     .attr("class", "label")
                     .attr("dy", ".35em")
                     .attr("fill", "#fff")
-                    .attr("font-size", "12px")
                     .attr("text-anchor", "middle")
+                    .attr("font-size", "1rem")
                     .attr("transform", d => `translate(${labelArc.centroid(d)})`)
                     .text(d => `${(d.data.value * 100).toFixed(1)}%`),
       update => update.transition()

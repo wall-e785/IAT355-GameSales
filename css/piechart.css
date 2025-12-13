@@ -41,7 +41,7 @@
   font-weight: bold;
 }
 
-.legend-label{
+.piechart-legend-label{
   font-size: .8rem;
   fill: white;
 }
@@ -79,11 +79,20 @@
   #pie-mobile-legend{
     display: none;
   }
+
+  .piechart-legend-label{
+    font-size: 1rem;
+  }
+
 }
 
 /* 1200px */
 @media (min-width: 75rem) {
   .pub-btn {
     width: 15vw;
+  }
+
+  .piechart-legend-label{
+    font-size: 1.2rem;
   }
 }
